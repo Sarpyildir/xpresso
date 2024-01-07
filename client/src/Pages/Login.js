@@ -5,21 +5,34 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 const Login = () => {
   const gridStyle = {
+    height: "80%",
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
+    zIndex: 2, // Ensure it's above the backDiv
+    position: "relative", // Needed to establish a stacking context for z-index
+    width: "100%",
+    // ... other styles
   };
+
   const leftGridStyle = {
-    backgroundColor: "green",
-    display: "grid",
-    placeItems: "center",
-    gridTemplateRows: "3fr 4fr",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "90%",
+    maxWidth: "100%",
+    justifySelf: "end",
+    padding: "2em",
+    boxSizing: "border-box",
   };
   const rightGridStyle = {
     display: "grid",
     gridTemplateColumns: "1fr",
     gridTemplateRows: "2fr 6fr",
-    width: "50%",
-    margin: "20px",
+    width: "90%",
+    maxWidth: "100%",
+    padding: "2em",
+    boxSizing: "border-box",
   };
   const rightGridFormStyle = {
     display: "grid",
@@ -29,7 +42,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div style={{ height: "100%", width: "100%" }}>
       <div style={gridStyle}>
         <div style={leftGridStyle}>
           <img src="./coffee.png" alt="Logo of website" width={"200px"} />
@@ -38,11 +51,10 @@ const Login = () => {
             style={{
               display: "grid",
               placeItems: "center",
-              margin: "2em",
               textAlign: "center",
             }}
           >
-            <h1> WELCOME TO XPESSO</h1>
+            <h1> WELCOME TO XPRESSO</h1>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
               convallis sem nec tortor ullamcorper, ut tincidunt nibh aliquet.
@@ -55,7 +67,13 @@ const Login = () => {
           </div>
         </div>
         <div style={rightGridStyle}>
-          <div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignContent: "center",
+            }}
+          >
             <p>REGISTER</p>
           </div>
           <form>
