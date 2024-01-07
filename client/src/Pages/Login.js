@@ -1,4 +1,7 @@
 import React from "react";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 const Login = () => {
   const gridStyle = {
@@ -18,7 +21,8 @@ const Login = () => {
   const rightGridFormStyle = {
     display: "grid",
     gridTemplateColumns: "1fr",
-    gridTemplateRows: "1fr 1fr 1fr",
+    gridTemplateRows: "1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr",
+    gap: "10px",
     backgroundColor: "pink",
   };
   return (
@@ -34,9 +38,39 @@ const Login = () => {
           </div>
           <form>
             <div style={rightGridFormStyle}>
-              <input type="text" name="name" />
+              <Button
+                component="label"
+                variant="contained"
+                startIcon={<CloudUploadIcon />}
+              >
+                Upload file
+              </Button>
+              <TextField id="outlined-basic" label="Name" variant="outlined" />
+              <TextField
+                id="outlined-basic"
+                label="Surname"
+                variant="outlined"
+              />
+              <TextField
+                id="outlined-basic"
+                label="Username"
+                variant="outlined"
+                type="email"
+              />
 
-              <input type="text" name="name" />
+              <TextField id="outlined-basic" label="Email" variant="outlined" />
+
+              <TextField
+                id="outlined-basic"
+                label="Password"
+                variant="outlined"
+                type="password"
+              />
+
+              <div>
+                <input type="checkbox" name="rememberMe" />
+                <label>Remember me</label>
+              </div>
 
               <input type="submit" value="Submit" />
             </div>
