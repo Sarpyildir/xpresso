@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
-const Login = () => {
+const Register = () => {
   const gridStyle = {
     height: "80%",
     display: "grid",
@@ -122,4 +122,4 @@ const Login = () => {
     </div>
   );
 };
-export default Login;
+export default Register;

@@ -1,5 +1,5 @@
 import React from "react";
-import Login from "./Login"; // Adjust the import path as necessary
+import Register from "./Register"; // Adjust the import path as necessary
 
 const LoginScreen = () => {
   const screenStyle = {
@@ -24,7 +24,7 @@ const LoginScreen = () => {
     zIndex: 1, // Lower z-index since it's the background
   };
 
-  const loginStyle = {
+  const frontDivStyle = {
     position: "relative", // Relative positioning for stacking context
     zIndex: 2, // Higher z-index to be above the backDiv
     width: "100%", // Full width
@@ -38,8 +38,8 @@ const LoginScreen = () => {
   return (
     <div style={screenStyle}>
       <div style={backDivStyle} /> {/* Background div */}
-      <div style={loginStyle}>
-        <Login /> {/* Your Login component */}
+      <div style={frontDivStyle}>
+        <Register /> {/* Your Login component */}
       </div>
     </div>
   );
