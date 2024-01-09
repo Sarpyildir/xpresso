@@ -1,7 +1,10 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import FileUpload from "../Components/FileUpload";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import DoubleButton from "../Components/DoubleButton";
+//import resizeAndBase64 from "../../utils/resizeAndBase64";
 
 const Register = () => {
   const gridStyle = {
@@ -28,7 +31,7 @@ const Register = () => {
   const rightGridStyle = {
     display: "grid",
     gridTemplateColumns: "1fr",
-    gridTemplateRows: "2fr 6fr",
+    gridTemplateRows: "1fr 6fr",
     width: "90%",
     maxWidth: "100%",
     padding: "2em",
@@ -37,8 +40,17 @@ const Register = () => {
   const rightGridFormStyle = {
     display: "grid",
     gridTemplateColumns: "1fr",
-    gridTemplateRows: "2fr 2fr 2fr 2fr 2fr 2fr 1fr 2fr",
-    gap: "10px",
+    gridTemplateRows: "auto auto auto auto auto ",
+    gap: "0.4em",
+  };
+  const [buttonText, setButtonText] = React.useState("Upload Profile Picture");
+  const [previewFile, setPreviewFile] = React.useState("");
+
+  const handleFileChange = async (event) => {
+    const file = event.target.files[0];
+    //file = await resizeAndBase64(file);
+    setPreviewFile(URL.createObjectURL(file));
+    setButtonText("Change");
   };
 
   return (
@@ -74,47 +86,72 @@ const Register = () => {
               alignContent: "center",
             }}
           >
-            <p>REGISTER</p>
+            <h1>REGISTERATION FORM</h1>
           </div>
           <form>
             <div style={rightGridFormStyle}>
-              <Button
-                component="label"
-                variant="contained"
-                startIcon={<CloudUploadIcon />}
-              >
-                Upload file
-              </Button>
-              <TextField id="outlined-basic" label="Name" variant="outlined" />
+              <div style={{ display: "grid", placeItems: "center" }}>
+                {previewFile && (
+                  <img
+                    src={previewFile}
+                    alt="Preview of uploaded file"
+                    width={"200px"}
+                  />
+                )}
+              </div>
+
+              <FileUpload onChange={handleFileChange} text={buttonText} />
+              <TextField
+                id="outlined-basic"
+                label="Name"
+                variant="outlined"
+                size="small"
+              />
               <TextField
                 id="outlined-basic"
                 label="Surname"
                 variant="outlined"
+                size="small"
               />
               <TextField
                 id="outlined-basic"
                 label="Username"
                 variant="outlined"
                 type="email"
+                size="small"
               />
 
-              <TextField id="outlined-basic" label="Email" variant="outlined" />
+              <TextField
+                id="outlined-basic"
+                label="Email"
+                variant="outlined"
+                size="small"
+              />
 
               <TextField
                 id="outlined-basic"
                 label="Password"
                 variant="outlined"
                 type="password"
+                size="small"
               />
 
               <div>
-                <input type="checkbox" name="rememberMe" />
-                <label>Remember me</label>
-                <input type="checkbox" name="termsAndConditions" required />
-                <label>Terms And Conditions</label>
+                <FormControlLabel
+                  control={<Checkbox size="small" />}
+                  label="Remember Me"
+                />
+                <FormControlLabel
+                  required
+                  control={<Checkbox size="small" />}
+                  label="Terms & Conditions"
+                />
               </div>
 
-              <input type="submit" value="Register" />
+              <DoubleButton
+                firstText="Have an account?"
+                secondText="Register"
+              />
             </div>
           </form>
         </div>
