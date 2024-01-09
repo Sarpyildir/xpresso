@@ -107,7 +107,9 @@ const Login = () => {
 
               <DoubleButton
                 firstText="Don't Have an Account?"
+                firstOnClick={() => {}}
                 secondText="Login"
+                secondOnClick={() => {}}
               />
             </div>
           </form>
