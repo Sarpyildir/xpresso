@@ -1,5 +1,5 @@
 import React from "react";
-import Register from "./Register"; // Adjust the import path as necessary
+import Login from "./Login"; // Adjust the import path as necessary
 
 const LoginScreen = () => {
   const screenStyle = {
@@ -39,7 +39,7 @@ const LoginScreen = () => {
     <div style={screenStyle}>
       <div style={backDivStyle} /> {/* Background div */}
       <div style={frontDivStyle}>
-        <Register /> {/* Your Login component */}
+        <Login /> {/* Your Login component */}
       </div>
     </div>
   );
