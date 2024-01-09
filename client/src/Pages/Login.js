@@ -6,6 +6,9 @@ import DoubleButton from "../Components/DoubleButton";
 import { useNavigate } from "react-router-dom";
 //import resizeAndBase64 from "../../utils/resizeAndBase64";
 
+// TODO: resizeAndBase64 'i incele.
+// TODO: REMEMBER ME implementasyonu lazım
+
 const Login = () => {
   const gridStyle = {
     height: "80%",
@@ -44,6 +47,13 @@ const Login = () => {
     gap: "0.4em",
   };
   const navigate = useNavigate();
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const handleLogin = (event) => {
+    event.preventDefault(); // Prevent the default form submission behavior
+    console.log("Login details:", email, password);
+    // Add your login logic here, e.g., sending a request to your server
+  };
   return (
     <div style={{ height: "100%", width: "100%" }}>
       <div style={gridStyle}>
@@ -88,6 +98,10 @@ const Login = () => {
                 label="Email"
                 variant="outlined"
                 size="small"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
               />
 
               <TextField
@@ -97,6 +111,10 @@ const Login = () => {
                 type="password"
                 size="small"
                 style={{ marginTop: "0.5em" }}
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
               />
 
               <div style={{ padding: "0.2em" }}>
@@ -112,7 +130,9 @@ const Login = () => {
                   navigate("/register");
                 }}
                 secondText="Login"
-                secondOnClick={() => {}}
+                secondOnClick={(e) => {
+                  handleLogin(e);
+                }}
               />
             </div>
           </form>

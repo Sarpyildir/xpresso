@@ -7,6 +7,10 @@ import DoubleButton from "../Components/DoubleButton";
 import { useNavigate } from "react-router-dom";
 //import resizeAndBase64 from "../../utils/resizeAndBase64";
 
+// TODO: form'da profil fotoğrafını da kaydetmeliyiz.
+// TODO: REMEMBER ME implementasyonu lazım
+// TODO: TERMS & CONDITIONS implementasyonu lazım - sona bırakılabilir.
+
 const Register = () => {
   const gridStyle = {
     height: "80%",
@@ -46,7 +50,16 @@ const Register = () => {
   };
   const [buttonText, setButtonText] = React.useState("Upload Profile Picture");
   const [previewFile, setPreviewFile] = React.useState("");
-
+  const [fname, setFName] = React.useState("");
+  const [surname, setSurname] = React.useState("");
+  const [username, setUsername] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const handleRegister = (event) => {
+    event.preventDefault(); // Prevent the default form submission behavior
+    console.log("Register details:", fname, surname, username, email, password);
+    // Add your register logic here, e.g., sending a request to your server
+  };
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
     //file = await resizeAndBase64(file);
@@ -107,12 +120,22 @@ const Register = () => {
                 label="Name"
                 variant="outlined"
                 size="small"
+                value={fname}
+                onChange={(e) => {
+                  setFName(e.target.value);
+                }}
+                style={{ margin: "1em 0 0.25em 0" }}
               />
               <TextField
                 id="outlined-basic"
                 label="Surname"
                 variant="outlined"
                 size="small"
+                style={{ margin: "0.25em 0 0.25em 0" }}
+                value={surname}
+                onChange={(e) => {
+                  setSurname(e.target.value);
+                }}
               />
               <TextField
                 id="outlined-basic"
@@ -120,6 +143,11 @@ const Register = () => {
                 variant="outlined"
                 type="email"
                 size="small"
+                style={{ margin: "0.25em 0 0.25em 0" }}
+                value={username}
+                onChange={(e) => {
+                  setUsername(e.target.value);
+                }}
               />
 
               <TextField
@@ -127,6 +155,11 @@ const Register = () => {
                 label="Email"
                 variant="outlined"
                 size="small"
+                value={email}
+                style={{ margin: "0.25em 0 0.25em 0" }}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
               />
 
               <TextField
@@ -135,6 +168,11 @@ const Register = () => {
                 variant="outlined"
                 type="password"
                 size="small"
+                value={password}
+                style={{ margin: "0.25em 0 0 0" }}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
               />
 
               <div>
@@ -155,6 +193,9 @@ const Register = () => {
                   navigate("/login");
                 }}
                 secondText="Register"
+                secondOnClick={(e) => {
+                  handleRegister(e);
+                }}
               />
             </div>
           </form>
