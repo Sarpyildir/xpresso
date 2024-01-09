@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import DoubleButton from "../Components/DoubleButton";
+import { useNavigate } from "react-router-dom";
 //import resizeAndBase64 from "../../utils/resizeAndBase64";
 
 const Login = () => {
@@ -42,7 +43,7 @@ const Login = () => {
     display: "grid",
     gap: "0.4em",
   };
-
+  const navigate = useNavigate();
   return (
     <div style={{ height: "100%", width: "100%" }}>
       <div style={gridStyle}>
@@ -107,7 +108,9 @@ const Login = () => {
 
               <DoubleButton
                 firstText="Don't Have an Account?"
-                firstOnClick={() => {}}
+                firstOnClick={() => {
+                  navigate("/register");
+                }}
                 secondText="Login"
                 secondOnClick={() => {}}
               />

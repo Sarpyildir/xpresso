@@ -4,6 +4,7 @@ import FileUpload from "../Components/FileUpload";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import DoubleButton from "../Components/DoubleButton";
+import { useNavigate } from "react-router-dom";
 //import resizeAndBase64 from "../../utils/resizeAndBase64";
 
 const Register = () => {
@@ -52,7 +53,7 @@ const Register = () => {
     setPreviewFile(URL.createObjectURL(file));
     setButtonText("Change");
   };
-
+  const navigate = useNavigate();
   return (
     <div style={{ height: "100%", width: "100%" }}>
       <div style={gridStyle}>
@@ -150,6 +151,9 @@ const Register = () => {
 
               <DoubleButton
                 firstText="Have an account?"
+                firstOnClick={() => {
+                  navigate("/login");
+                }}
                 secondText="Register"
               />
             </div>
