@@ -49,9 +49,19 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [data, setData] = React.useState("first data");
+  async function getData() {
+    const response = await fetch("http://localhost:5000/api/test", {
+      method: "GET",
+    });
+    const data = await response.json();
+    setData(data);
+  }
   const handleLogin = (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
     console.log("Login details:", email, password);
+    getData();
+    console.log(data);
     // Add your login logic here, e.g., sending a request to your server
   };
   return (
