@@ -17,8 +17,13 @@ mongoose
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Import routes
 const testRouter = require("./api/routes/test");
-app.use("/api", testRouter);
+const registerRouter = require("./api/routes/register");
+
+// Use routes
+app.use("/api/test", testRouter);
+app.use("/api/register", registerRouter);
 
 app.get("/", (req, res) => {
   res.json("Hello World!");

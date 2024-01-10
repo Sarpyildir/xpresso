@@ -5,6 +5,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import DoubleButton from "../Components/DoubleButton";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 //import resizeAndBase64 from "../../utils/resizeAndBase64";
 
 // TODO: form'da profil fotoğrafını da kaydetmeliyiz.
@@ -58,7 +59,19 @@ const Register = () => {
   const handleRegister = (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
     console.log("Register details:", fname, surname, username, email, password);
-    // Add your register logic here, e.g., sending a request to your server
+    axios
+      .post("http://localhost:5000/api/register/newUser", {
+        fname: fname,
+        surname: surname,
+        username: username,
+        email: email,
+        password: password,
+      })
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      });
+    console.log("Registeration is completed");
   };
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
