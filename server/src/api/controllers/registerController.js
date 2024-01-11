@@ -1,4 +1,5 @@
 import User from "../models/user.js";
+// TODO: check if user already exists with the same email or username
 async function registerUser(req, res) {
   try {
     const newUser = new User(req.body);
