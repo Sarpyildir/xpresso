@@ -9,8 +9,7 @@ import axios from "axios";
 //import resizeAndBase64 from "../../utils/resizeAndBase64";
 
 // TODO: form'da profil fotoğrafını da kaydetmeliyiz.
-// TODO: REMEMBER ME implementasyonu lazım
-// TODO: TERMS & CONDITIONS implementasyonu lazım - sona bırakılabilir.
+// TODO: TERMS & CONDITIONS yazısı, yazıyı gösterme lazım - sona bırakılabilir.
 
 const Register = () => {
   const gridStyle = {
@@ -56,22 +55,12 @@ const Register = () => {
   const [username, setUsername] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [rememberMe, setRememberMe] = React.useState(false);
   const [termsAndConditions, setTermsAndConditions] = React.useState(false);
   const handleRegister = (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
     if (!termsAndConditions) {
       alert("Please accept terms and conditions");
     } else {
-      console.log("Client Side:");
-      console.log(
-        "Register details:",
-        name,
-        surname,
-        username,
-        email,
-        password
-      );
       axios
         .post("http://localhost:5000/api/register/newUser", {
           name: name,
@@ -203,14 +192,7 @@ const Register = () => {
               <div>
                 <FormControlLabel
                   control={<Checkbox size="small" />}
-                  label="Remember Me"
-                  onChange={(e) => {
-                    setRememberMe(e.target.checked);
-                  }}
-                />
-                <FormControlLabel
-                  control={<Checkbox size="small" />}
-                  label="Terms & Conditions"
+                  label="I accept Terms & Conditions"
                   onChange={(e) => {
                     setTermsAndConditions(e.target.checked);
                   }}
