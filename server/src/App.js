@@ -1,8 +1,14 @@
 // morgan and cors is not installed yet
-const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
-require("dotenv").config();
+// const express = require("express");
+// const cors = require("cors");
+// const mongoose = require("mongoose");
+
+import express from "express";
+import cors from "cors";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -18,12 +24,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Import routes
-const testRouter = require("./api/routes/test");
-const registerRouter = require("./api/routes/register");
+import { getTest } from "./api/routes/test.js";
+import { registerUser } from "./api/routes/register.js";
 
 // Use routes
-app.use("/api/test", testRouter);
-app.use("/api/register", registerRouter);
+app.use("/api/test", getTest);
+app.use("/api/register", registerUser);
 
 app.get("/", (req, res) => {
   res.json("Hello World!");

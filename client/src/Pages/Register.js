@@ -51,27 +51,39 @@ const Register = () => {
   };
   const [buttonText, setButtonText] = React.useState("Upload Profile Picture");
   const [previewFile, setPreviewFile] = React.useState("");
-  const [fname, setFName] = React.useState("");
+  const [name, setName] = React.useState("");
   const [surname, setSurname] = React.useState("");
   const [username, setUsername] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [rememberMe, setRememberMe] = React.useState(false);
+  const [termsAndConditions, setTermsAndConditions] = React.useState(false);
   const handleRegister = (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
-    console.log("Register details:", fname, surname, username, email, password);
-    axios
-      .post("http://localhost:5000/api/register/newUser", {
-        fname: fname,
-        surname: surname,
-        username: username,
-        email: email,
-        password: password,
-      })
-      .then((res) => {
-        console.log(res);
-        console.log(res.data);
-      });
-    console.log("Registeration is completed");
+    if (!termsAndConditions) {
+      alert("Please accept terms and conditions");
+    } else {
+      console.log("Client Side:");
+      console.log(
+        "Register details:",
+        name,
+        surname,
+        username,
+        email,
+        password
+      );
+      axios
+        .post("http://localhost:5000/api/register/newUser", {
+          name: name,
+          surname: surname,
+          username: username,
+          email: email,
+          password: password,
+        })
+        .then((res) => {
+          console.log(res.data);
+        });
+    }
   };
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
@@ -133,9 +145,9 @@ const Register = () => {
                 label="Name"
                 variant="outlined"
                 size="small"
-                value={fname}
+                value={name}
                 onChange={(e) => {
-                  setFName(e.target.value);
+                  setName(e.target.value);
                 }}
                 style={{ margin: "1em 0 0.25em 0" }}
               />
@@ -192,11 +204,16 @@ const Register = () => {
                 <FormControlLabel
                   control={<Checkbox size="small" />}
                   label="Remember Me"
+                  onChange={(e) => {
+                    setRememberMe(e.target.checked);
+                  }}
                 />
                 <FormControlLabel
-                  required
                   control={<Checkbox size="small" />}
                   label="Terms & Conditions"
+                  onChange={(e) => {
+                    setTermsAndConditions(e.target.checked);
+                  }}
                 />
               </div>
 
