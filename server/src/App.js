@@ -31,6 +31,7 @@ import { loginUser } from "./api/routes/loginRoute.js";
 // Use routes
 app.use("/api/test", getTest);
 app.use("/api/register", registerUser);
+app.use("/api/login", loginUser);
 
 app.get("/", (req, res) => {
   res.json("Hello World!");

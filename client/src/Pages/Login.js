@@ -8,7 +8,7 @@ import axios from "axios";
 //import resizeAndBase64 from "../../utils/resizeAndBase64";
 
 // TODO: resizeAndBase64 'i incele.
-// TODO: REMEMBER ME implementasyonu lazım
+// TODO: Password'u bcrypt ile hashle (server side da yapılacaksa nasıl kontrol edeceğiz passwordler uyuyormu diye)
 
 const Login = () => {
   const gridStyle = {
@@ -50,10 +50,9 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [rememberMe, setRememberMe] = React.useState(false);
   const handleLogin = (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
-    console.log("Client Side:");
-    console.log("Login details:", email, password);
     // Add your login logic here, e.g., sending a request to your server
     axios
       .post("http://localhost:5000/api/login/login", {
@@ -61,7 +60,40 @@ const Login = () => {
         password: password,
       })
       .then((res) => {
-        console.log("After post is done:", res.data);
+        // Do not store password in local storage or session storage.
+        const userData = {
+          email: res.data.email,
+          name: res.data.name,
+          surname: res.data.surname,
+          username: res.data.username,
+          _id: res.data._id,
+        };
+
+        // if user selects "remember me"
+        if (rememberMe) {
+          localStorage.setItem("user", JSON.stringify(userData));
+          // to retrieve data: const storedUserData = JSON.parse(localStorage.getItem('user'));
+        }
+        // We set the user data to sessionStorage no matter of remember me selection.
+        sessionStorage.setItem("user", JSON.stringify(userData));
+        // to retrieve data: const storedUserData = JSON.parse(sessionStorage.getItem('user'));
+
+        // TODO: navigation'ı home page'i yapınca ona ayarla.
+        navigate("/");
+      })
+      .catch((err) => {
+        if (err.response) {
+          console.log("Error data: ", err.response.data);
+          console.log("Error status: ", err.response.status);
+          if (err.response.status === 401) {
+            alert("Wrong password");
+          } else if (err.response.status === 404) {
+            alert("User not found");
+          }
+        } else {
+          alert("No response from server");
+          console.log("No respone from server");
+        }
       });
   };
   return (
@@ -131,6 +163,9 @@ const Login = () => {
                 <FormControlLabel
                   control={<Checkbox size="small" />}
                   label="Remember Me"
+                  onChange={(e) => {
+                    setRememberMe(e.target.checked);
+                  }}
                 />
               </div>
 
