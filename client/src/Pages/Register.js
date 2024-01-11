@@ -70,10 +70,28 @@ const Register = () => {
           password: password,
         })
         .then((res) => {
-          console.log(res.data);
+          navigate("/login");
+        })
+        .catch((err) => {
+          // Error handling
+          if (err.response) {
+            // The server responded with a status code outside the 2xx range
+            console.log("Error data:", err.response.data);
+            console.log("Error status:", err.response.status);
+            alert("Registration failed: " + err.response.data);
+          } else if (err.request) {
+            // The request was made but no response was received
+            console.log("No response was received");
+            alert("No response from the server");
+          } else {
+            // Something happened in setting up the request
+            console.log("Error:", err.message);
+            alert("An error occurred: " + err.message);
+          }
         });
     }
   };
+
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
     //file = await resizeAndBase64(file);

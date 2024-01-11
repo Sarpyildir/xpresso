@@ -53,7 +53,6 @@ const Login = () => {
   const [rememberMe, setRememberMe] = React.useState(false);
   const handleLogin = (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
-    // Add your login logic here, e.g., sending a request to your server
     axios
       .post("http://localhost:5000/api/login/login", {
         email: email,
