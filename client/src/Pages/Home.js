@@ -27,7 +27,7 @@ const Home = () => {
     flex: 1,
     display: "flex",
     flexDirection: "row", // This will layout the children (text and image containers) in a row
-    justifyContent: "center", // This centers the children in the container
+    justifyContent: "space-around", // This centers the children in the container
     alignItems: "center", // This aligns the children vertically at the center
     maxWidth: "1200px", // Adjust the max width as needed
     margin: "0 auto", // This centers the container itself within the outer div
@@ -37,13 +37,14 @@ const Home = () => {
 
   const textContainerStyle = {
     maxWidth: "600px", // adjust as necessary based on your layout
+    textAlign: "left",
   };
 
   const imageContainerStyle = {
     // Adjust the size as needed, or keep it responsive
     height: "300px", // Example fixed height, or you could use flex-grow
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "flex-end",
     alignItems: "center",
   };
 
@@ -61,11 +62,16 @@ const Home = () => {
     borderColor: "#FFF8EA",
     letterSpacing: "2px",
     fontWeight: "bold", // If the text is bold
+    height: "50px",
+    marginLeft: "20px",
+    ":hover": {
+      borderWidth: "3px",
+      color: "#9E7676",
+      borderColor: "#9E7676",
+    },
   };
   const beanImageStyle = {
-    maxWidth: "25%",
-    maxHeight: "25%",
-    height: "auto", // This keeps the aspect ratio of the image
+    height: "150px", // This keeps the aspect ratio of the image
   };
 
   return (
@@ -86,18 +92,6 @@ const Home = () => {
               <li>Have your own notes.</li>
               <li>See what others think about in Blogs.</li>
             </ul>
-            <div>
-              <img
-                src="./coffeeBeansRoast.svg"
-                alt="Coffee Beans"
-                style={beanImageStyle}
-              />
-              <p>5 million coffees are brewed each day.</p>
-              <p>Over 2.25 billion cups of coffee are consumed daily.</p>
-              <Button variant="outlined" sx={buttonStyle}>
-                LEARN MORE
-              </Button>
-            </div>
 
             {/* ... logos ... */}
           </div>
@@ -108,6 +102,21 @@ const Home = () => {
               style={coffeeImageStyle}
             />
           </div>
+        </div>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <img
+            src="./coffeeBeansRoast.svg"
+            alt="Coffee Beans"
+            style={beanImageStyle}
+          />
+          <p style={{ margin: "3rem" }}>
+            5 million coffees are brewed each day.
+            <br />
+            Over 2.25 billion cups of coffee are consumed daily.
+          </p>
+          <Button variant="outlined" sx={buttonStyle}>
+            LEARN MORE
+          </Button>
         </div>
       </div>
       <Footer />
