@@ -31,12 +31,13 @@ const Home = () => {
     alignItems: "center", // This aligns the children vertically at the center
     maxWidth: "1200px", // Adjust the max width as needed
     margin: "0 auto", // This centers the container itself within the outer div
-    padding: "1rem",
+    padding: "1rem 1rem 0 1rem",
     boxSizing: "border-box",
   };
 
   const textContainerStyle = {
-    maxWidth: "600px", // adjust as necessary based on your layout
+    fontSize: "1.2rem",
+    maxWidth: "400px", // adjust as necessary based on your layout
     textAlign: "left",
   };
 
@@ -80,17 +81,25 @@ const Home = () => {
       <div style={contentStyle}>
         <div style={contentContainerStyle}>
           <div style={textContainerStyle}>
-            <h1>XPRESSO</h1>
+            <h1 style={{ textAlign: "center", fontSize: "3rem" }}>XPRESSO</h1>
             <p>
               A social platform for coffee lovers to exchange experiences and
               learn about coffee.
             </p>
             <ul>
-              <li>Learn how to brew different kinds of coffees.</li>
-              <li>Check their background information.</li>
-              <li>Check their effect on health.</li>
-              <li>Have your own notes.</li>
-              <li>See what others think about in Blogs.</li>
+              <li style={{ marginTop: "1.5rem" }}>
+                Learn how to brew different kinds of coffees.
+              </li>
+              <li style={{ marginTop: "1rem" }}>
+                Check their background information.
+              </li>
+              <li style={{ marginTop: "1rem" }}>
+                Check their effect on health.
+              </li>
+              <li style={{ marginTop: "1rem" }}>Have your own notes.</li>
+              <li style={{ marginTop: "1rem" }}>
+                See what others think about in Blogs.
+              </li>
             </ul>
 
             {/* ... logos ... */}
@@ -103,7 +112,13 @@ const Home = () => {
             />
           </div>
         </div>
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            marginBottom: "1rem",
+          }}
+        >
           <img
             src="./coffeeBeansRoast.svg"
             alt="Coffee Beans"
