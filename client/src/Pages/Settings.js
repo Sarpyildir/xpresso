@@ -26,13 +26,18 @@ const Settings = () => {
   };
   const userInfoStyle = {
     marginTop: "0px",
-    marginBottom: "20px",
     padding: "20px",
     border: "1px solid #ddd",
     borderRadius: "5px",
     backgroundColor: "#FFF8EA",
     boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
     width: "300px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "9px",
+    fontSize: "1.2rem",
   };
   const buttonStyle = {
     color: "#9E7676", // This is for the text color
@@ -97,6 +102,11 @@ const Settings = () => {
       <div style={contentStyle}>
         <div style={userInfoStyle}>
           <h1>User Information</h1>
+          <img
+            src="https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
+            alt="Preview of uploaded image"
+            style={{ width: "150px", height: "150px", margin: "10px" }}
+          />
           <div>
             <p>Username: {userData.username} </p>
           </div>

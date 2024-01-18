@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "semantic-ui-css/semantic.min.css";
 import TextField from "@mui/material/TextField";
+import FileUpload from "../Components/FileUpload.js";
 //TODO: save tuşununun fonksiyonalitesini ayarla.
 const SettingsEdit = (props) => {
   const gridContainerStyle = {
@@ -25,9 +26,15 @@ const SettingsEdit = (props) => {
     alignItems: "center",
     justifyContent: "center",
   };
+  const [previewFile, setPreviewFile] = React.useState("");
 
+  const handleFileChange = async (event) => {
+    const file = event.target.files[0];
+    //file = await resizeAndBase64(file);
+    setPreviewFile(URL.createObjectURL(file));
+  };
   return (
-    <form style={{ height: "100%" }}>
+    <form style={{ height: "100%", textAlign: "center" }}>
       <h1>Edit Information</h1>
       <div style={gridContainerStyle}>
         <div style={gridImageContainerStyle}>
@@ -38,12 +45,13 @@ const SettingsEdit = (props) => {
             }}
           >
             <img
-              src="https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
-              alt="Preview of uploaded image"
+              src={previewFile}
+              alt="Preview of uploaded file"
               style={{ width: "150px", height: "150px", margin: "10px" }}
             />
 
             {/* handleimagechange*/}
+            <FileUpload text="change" onChange={handleFileChange} />
           </div>
         </div>
         <div style={gridInputContainerStyle}>
