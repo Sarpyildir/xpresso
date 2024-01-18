@@ -4,7 +4,7 @@ import LoginScreen from "./Pages/LoginScreen";
 import RegisterationScreen from "./Pages/RegisterationScreen";
 import Settings from "./Pages/Settings";
 import Coffee from "./Pages/Coffee";
-import CoffeeCard from "./Components/CoffeeCard";
+import Bean from "./Pages/Bean";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
         <Route path="/register" element={<RegisterationScreen />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/coffee" element={<Coffee />} />
-        <Route path="/coffeecard" element={<CoffeeCard />} />
+        <Route path="/bean" element={<Bean />} />
         <Route index path="/" element={<Home />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

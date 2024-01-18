@@ -3,7 +3,7 @@ import Header from "../Components/Header.js";
 import Footer from "../Components/Footer.js";
 import CoffeeCard from "../Components/CoffeeCard.js";
 
-const Coffee = () => {
+const Bean = () => {
   // Styles
   const containerStyle = {
     display: "flex",
@@ -26,29 +26,27 @@ const Coffee = () => {
   };
 
   // Assuming you have a list of coffee data to map through
-  const coffees = [
-    { id: 1, name: "Espresso" },
-    { id: 2, name: "Americano" },
-    { id: 3, name: "Latte" },
-    { id: 4, name: "Mocha" },
-    { id: 5, name: "Cortado" },
-    { id: 6, name: "Flat White" },
-    { id: 7, name: "Cappuccino" },
-    { id: 8, name: "Macchiato" },
-    { id: 9, name: "Frappe" },
-    { id: 10, name: "Cold Brew" },
-    { id: 11, name: "Chai Tea" },
-    { id: 12, name: "Affogato" },
-
-    // ... more coffees
+  const beans = [
+    { id: 1, name: "Robusta" },
+    { id: 2, name: "Arabica" },
+    { id: 3, name: "Liberica" },
+    { id: 4, name: "Excelsa" },
+    { id: 5, name: "Typica" },
+    { id: 6, name: "Geisha" },
+    { id: 7, name: "Bourbon" },
+    { id: 8, name: "Mundo Novo" },
+    { id: 9, name: "Mocha" },
+    { id: 10, name: "Jember" },
+    { id: 11, name: "Caturra" },
+    { id: 12, name: "PacaMara" },
   ];
 
   return (
     <div style={containerStyle}>
       <Header />
       <div style={contentStyle}>
-        {coffees.map((coffee) => (
-          <CoffeeCard key={coffee.id} text={coffee.name} />
+        {beans.map((bean) => (
+          <CoffeeCard key={bean.id} text={bean.name} />
         ))}
       </div>
       <Footer />
@@ -56,4 +54,4 @@ const Coffee = () => {
   );
 };
 
-export default Coffee;
+export default Bean;
