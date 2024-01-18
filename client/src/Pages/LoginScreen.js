@@ -29,7 +29,7 @@ const LoginScreen = () => {
     zIndex: 2, // Higher z-index to be above the backDiv
     width: "100%", // Full width
     maxWidth: "60%", // Maximum width of the login form
-    backgroundColor: "#EBDBCA", // Background color for the login form
+    backgroundColor: "#FFF8EA", // Background color for the login form
     padding: "1em", // Padding around the login form
     borderRadius: "80px", // Optional border radius for aesthetics
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Optional box shadow for aesthetics
