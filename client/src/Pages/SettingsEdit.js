@@ -1,7 +1,7 @@
 import React from "react";
 import "semantic-ui-css/semantic.min.css";
 import TextField from "@mui/material/TextField";
-
+//TODO: save tuşununun fonksiyonalitesini ayarla.
 const SettingsEdit = (props) => {
   const gridContainerStyle = {
     display: "grid",
@@ -85,11 +85,24 @@ const SettingsEdit = (props) => {
           </div>
           <div style={gridButtonsStyle}>
             <div class="ui buttons">
-              <button class="ui button" type="button" onClick={props.onCancel}>
+              <button
+                class="ui button"
+                type="button"
+                style={{
+                  backgroundColor: "#9E7676",
+                  color: "#FFF8EA",
+                  borderRadius: "50px",
+                }}
+                onClick={props.onCancel}
+              >
                 Cancel
               </button>
               <div class="or"></div>
-              <button class="ui positive button" type="submit">
+              <button
+                class="ui positive button"
+                type="submit"
+                style={{ borderRadius: "50px" }}
+              >
                 Save
               </button>
             </div>
