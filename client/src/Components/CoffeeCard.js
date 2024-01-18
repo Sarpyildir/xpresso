@@ -6,11 +6,12 @@ import IconButton from "@mui/material/IconButton";
 function CoffeeCard(props) {
   // TODO: Handling user's image.
   const divStyle = {
-    width: "200px",
-    backgroundColor: "red",
+    width: "250px",
+    backgroundColor: "#FFF8EA",
     textAlign: "center",
-    padding: "10px",
+    padding: "20px",
     borderRadius: "20px",
+    margin: 0,
   };
   const buttonStyle = {
     color: "#783F0B", // This is for the text color
@@ -29,23 +30,27 @@ function CoffeeCard(props) {
       borderColor: "#783F0B",
     },
   };
+  const imageStyle = {
+    width: "100%",
+    height: "auto",
+  };
 
-  //const currUser = JSON.parse(sessionStorage.getItem("user"));
-  const currUser = { name: "Sarp" };
   return (
     <div style={divStyle}>
       <img
+        style={imageStyle}
         src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y29mZmVlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
-        style={{ width: "180px" }}
       />
-      <h1 style={{ margin: 0 }}>{props.text}</h1>
-      <div style={{ display: "flex", marginTop: "10px" }}>
+      <h1 style={{ margin: "10px 0", fontSize: "1.3rem" }}>{props.text}</h1>
+      <div
+        style={{ display: "flex", marginTop: "10px", justifyContent: "center" }}
+      >
         <Button variant="outlined" sx={buttonStyle}>
           LEARN MORE
         </Button>
         <IconButton
           aria-label="favorite"
-          style={{ backgroundColor: "black", width: "32px", height: "32px" }}
+          style={{ backgroundColor: "#783F0B", width: "32px", height: "32px" }}
         >
           <FavoriteBorderIcon sx={{ color: "white" }} />
         </IconButton>
