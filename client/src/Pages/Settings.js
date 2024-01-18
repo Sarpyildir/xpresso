@@ -1,9 +1,13 @@
 import React from "react";
+import { useState } from "react";
 import Header from "../Components/Header.js";
 import Footer from "../Components/Footer.js";
+import SettingsEdit from "./SettingsEdit.js";
 import Button from "@mui/material/Button";
 
 // TODO: session storage ile userData'yı bağla.
+// TODO: logout butonu için fonksiyon yaz.
+// TODO: Profile picture'ı handle et.
 const Settings = () => {
   // Styles
   const containerStyle = {
@@ -14,7 +18,7 @@ const Settings = () => {
   };
   const contentStyle = {
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "row",
     flexGrow: "1",
     alignItems: "center",
     justifyContent: "center",
@@ -48,6 +52,19 @@ const Settings = () => {
       borderColor: "#FFF8EA",
     },
   };
+  const editFormStyle = {
+    marginLeft: "50px",
+    padding: "20px",
+    border: "1px solid #ddd",
+    borderRadius: "5px",
+    backgroundColor: "#FFF8EA",
+    boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+    width: "500px",
+  };
+  const [isEditing, setIsEditing] = useState(false);
+  const handleEdit = () => {
+    setIsEditing((prevIsEditing) => !prevIsEditing);
+  };
   const storedUserData = JSON.parse(sessionStorage.getItem("user"));
   const userData = {
     username: "Sarpyildir",
@@ -77,11 +94,17 @@ const Settings = () => {
             <Button variant="outlined" sx={buttonStyle}>
               Logout
             </Button>
-            <Button variant="outlined" sx={buttonStyle}>
+            <Button variant="outlined" sx={buttonStyle} onClick={handleEdit}>
               Edit
             </Button>
           </div>
         </div>
+        {isEditing && (
+          <div style={editFormStyle}>
+            {/* Render your form here */}
+            <SettingsEdit userData={userData} onCancel={handleEdit} />
+          </div>
+        )}
       </div>
       <Footer />
     </div>

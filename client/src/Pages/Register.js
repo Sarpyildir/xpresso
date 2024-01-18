@@ -173,7 +173,6 @@ const Register = () => {
                 id="outlined-basic"
                 label="Username"
                 variant="outlined"
-                type="email"
                 size="small"
                 style={{ margin: "0.25em 0 0.25em 0" }}
                 value={username}
@@ -187,6 +186,7 @@ const Register = () => {
                 label="Email"
                 variant="outlined"
                 size="small"
+                type="email"
                 value={email}
                 style={{ margin: "0.25em 0 0.25em 0" }}
                 onChange={(e) => {
