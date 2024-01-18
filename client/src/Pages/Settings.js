@@ -52,6 +52,25 @@ const Settings = () => {
       borderColor: "#FFF8EA",
     },
   };
+  const buttonStyle2 = {
+    color: "#FFF8EA", // This is for the text color
+    borderRadius: "25px", // Adjust the border-radius to match the button's curvature
+    padding: "10px 20px", // Adjust the padding to match the button's size
+    cursor: "pointer",
+    borderWidth: "3px",
+    borderColor: "#9E7676",
+    letterSpacing: "2px",
+    fontWeight: "bold", // If the text is bold
+    height: "50px",
+    marginLeft: "20px",
+    backgroundColor: "#9E7676",
+    ":hover": {
+      borderWidth: "3px",
+      color: "#9E7676",
+      backgroundColor: "#FFF8EA",
+      borderColor: "#9E7676",
+    },
+  };
   const editFormStyle = {
     marginLeft: "50px",
     padding: "20px",
@@ -94,7 +113,7 @@ const Settings = () => {
             <Button variant="outlined" sx={buttonStyle}>
               Logout
             </Button>
-            <Button variant="outlined" sx={buttonStyle} onClick={handleEdit}>
+            <Button variant="outlined" sx={buttonStyle2} onClick={handleEdit}>
               Edit
             </Button>
           </div>

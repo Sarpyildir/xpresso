@@ -1,12 +1,14 @@
 import React from "react";
 import "semantic-ui-css/semantic.min.css";
+import TextField from "@mui/material/TextField";
 
 const SettingsEdit = (props) => {
   const gridContainerStyle = {
     display: "grid",
-    gridTemplateColumns: "1fr 3fr",
+    gridTemplateColumns: "1fr 1fr",
     height: "100%",
     gap: "20px",
+    padding: "20px",
   };
   const gridImageContainerStyle = {
     height: "100%",
@@ -16,31 +18,14 @@ const SettingsEdit = (props) => {
     gridTemplateRows: "2fr 1fr",
   };
   const gridInputsStyle = {
-    display: "grid",
-    gridTemplateRows: "1fr 1fr 1fr",
-    gridTemplateColumns: "1fr 2fr",
-
     height: "100%",
   };
   const gridButtonsStyle = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: "10px",
   };
-  const centeredStyle = {
-    marginLeft: "10px",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-start",
-  };
-  const centeredInputStyle = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    margin: "10px",
-    height: "70%",
-  };
+
   return (
     <form style={{ height: "100%" }}>
       <h1>Edit Information</h1>
@@ -63,46 +48,39 @@ const SettingsEdit = (props) => {
         </div>
         <div style={gridInputContainerStyle}>
           <div style={gridInputsStyle}>
-            <label style={centeredStyle} htmlFor="username">
-              Username:
-            </label>
-            <input
-              type="text"
-              id="username"
-              name="username"
+            <TextField
+              id="outlined-basic"
+              label="Username"
+              variant="outlined"
+              size="small"
+              style={{ margin: "0px 0px 10px 0px" }}
               value={props.userData.username}
-              style={centeredInputStyle}
             />
-            <label style={centeredStyle} htmlFor="name">
-              Name:
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
+            <TextField
+              id="outlined-basic"
+              label="Name"
+              variant="outlined"
+              size="small"
               value={props.userData.name}
-              style={centeredInputStyle}
+              style={{ margin: "10px 0 10px 0" }}
             />
 
-            <label style={centeredStyle} htmlFor="surname">
-              Surname:
-            </label>
-            <input
-              type="text"
-              id="surname"
-              name="surname"
+            <TextField
+              id="outlined-basic"
+              label="Surname"
+              variant="outlined"
+              size="small"
+              style={{ margin: "10px 0 10px 0" }}
               value={props.userData.surname}
-              style={centeredInputStyle}
             />
-            <label style={centeredStyle} htmlFor="email">
-              Email:
-            </label>
-            <input
+            <TextField
+              id="outlined-basic"
+              label="Email"
+              variant="outlined"
+              size="small"
               type="email"
-              id="email"
-              name="email"
               value={props.userData.email}
-              style={centeredInputStyle}
+              style={{ margin: "10px 0 0px 0" }}
             />
           </div>
           <div style={gridButtonsStyle}>
