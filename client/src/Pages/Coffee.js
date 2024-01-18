@@ -15,13 +15,14 @@ const Coffee = () => {
     justifyContent: "space-between", // This will ensure the Header and Footer are at the top and bottom respectively
   };
   const contentStyle = {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-around",
-    gap: "2rem", // Maintains the gap between items
-    padding: "1rem", // Padding on all sides
-    boxSizing: "border-box", // Border and padding are included in the width
-    overflow: "auto", // In case content is taller than the screen, allows scrolling
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+    gap: "30px",
+    padding: "1rem",
+    boxSizing: "border-box",
+    overflow: "auto",
+    justifyContent: "space-evenly", // This will distribute space around the items
+    alignContent: "start",
   };
 
   // Assuming you have a list of coffee data to map through
