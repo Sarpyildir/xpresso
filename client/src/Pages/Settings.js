@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../Components/Header.js";
 import Footer from "../Components/Footer.js";
 import Button from "@mui/material/Button";
+
 // TODO: session storage ile userData'yı bağla.
 const Settings = () => {
   // Styles
@@ -10,6 +11,42 @@ const Settings = () => {
     flexDirection: "column",
     height: "100vh",
     fontSize: "1rem",
+  };
+  const contentStyle = {
+    display: "flex",
+    flexDirection: "column",
+    flexGrow: "1",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#783F0B",
+  };
+  const userInfoStyle = {
+    marginTop: "0px",
+    marginBottom: "20px",
+    padding: "20px",
+    border: "1px solid #ddd",
+    borderRadius: "5px",
+    backgroundColor: "#FFF8EA",
+    boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+    width: "300px",
+  };
+  const buttonStyle = {
+    color: "#9E7676", // This is for the text color
+    borderRadius: "25px", // Adjust the border-radius to match the button's curvature
+    padding: "10px 20px", // Adjust the padding to match the button's size
+    cursor: "pointer",
+    borderWidth: "3px",
+    borderColor: "#9E7676",
+    letterSpacing: "2px",
+    fontWeight: "bold", // If the text is bold
+    height: "50px",
+    marginLeft: "20px",
+    ":hover": {
+      borderWidth: "3px",
+      color: "#FFF8EA",
+      backgroundColor: "#9E7676",
+      borderColor: "#FFF8EA",
+    },
   };
   const storedUserData = JSON.parse(sessionStorage.getItem("user"));
   const userData = {
@@ -21,19 +58,29 @@ const Settings = () => {
   return (
     <div style={containerStyle}>
       <Header />
-      <div>
-        <h1>User Information</h1>
-        <div>
-          <p>Username: {userData.username} </p>
-        </div>
-        <div>
-          <p>Name: {userData.name} </p>
-        </div>
-        <div>
-          <p>Surname: {userData.surname} </p>
-        </div>
-        <div>
-          <p>Email: {userData.email} </p>
+      <div style={contentStyle}>
+        <div style={userInfoStyle}>
+          <h1>User Information</h1>
+          <div>
+            <p>Username: {userData.username} </p>
+          </div>
+          <div>
+            <p>Name: {userData.name} </p>
+          </div>
+          <div>
+            <p>Surname: {userData.surname} </p>
+          </div>
+          <div>
+            <p>Email: {userData.email} </p>
+          </div>
+          <div>
+            <Button variant="outlined" sx={buttonStyle}>
+              Logout
+            </Button>
+            <Button variant="outlined" sx={buttonStyle}>
+              Edit
+            </Button>
+          </div>
         </div>
       </div>
       <Footer />
