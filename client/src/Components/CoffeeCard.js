@@ -9,7 +9,7 @@ function CoffeeCard(props) {
     width: "250px",
     backgroundColor: "#FFF8EA",
     textAlign: "center",
-    padding: "20px",
+    padding: "25px 25px 20px 25px",
     borderRadius: "20px",
     margin: 0,
   };
@@ -20,9 +20,9 @@ function CoffeeCard(props) {
     cursor: "pointer",
     borderWidth: "3px",
     borderColor: "#783F0B",
-    letterSpacing: "1px",
+    letterSpacing: "2px",
     fontWeight: "bold", // If the text is bold
-    height: "32px",
+    height: "35px",
     marginRight: "10px",
     ":hover": {
       borderWidth: "3px",
@@ -43,14 +43,18 @@ function CoffeeCard(props) {
       />
       <h1 style={{ margin: "10px 0", fontSize: "1.3rem" }}>{props.text}</h1>
       <div
-        style={{ display: "flex", marginTop: "10px", justifyContent: "center" }}
+        style={{
+          display: "flex",
+          marginTop: "10px",
+          justifyContent: "space-between",
+        }}
       >
         <Button variant="outlined" sx={buttonStyle}>
           LEARN MORE
         </Button>
         <IconButton
           aria-label="favorite"
-          style={{ backgroundColor: "#783F0B", width: "32px", height: "32px" }}
+          style={{ backgroundColor: "#783F0B", width: "35px", height: "35px" }}
         >
           <FavoriteBorderIcon sx={{ color: "white" }} />
         </IconButton>
