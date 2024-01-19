@@ -48,7 +48,7 @@ const Coffee = () => {
       <Header />
       <div style={contentStyle}>
         {coffees.map((coffee) => (
-          <CoffeeCard key={coffee.id} text={coffee.name} />
+          <CoffeeCard key={coffee.id} coffeeName={coffee.name} />
         ))}
       </div>
       <Footer />

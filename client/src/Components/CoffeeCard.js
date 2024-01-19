@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import IconButton from "@mui/material/IconButton";
@@ -34,6 +35,10 @@ function CoffeeCard(props) {
     width: "100%",
     height: "auto",
   };
+  const navigate = useNavigate();
+  const handleButtonClick = () => {
+    navigate(`/learncoffee/${props.coffeeName}`);
+  };
 
   return (
     <div style={divStyle}>
@@ -42,7 +47,9 @@ function CoffeeCard(props) {
         src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y29mZmVlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
         alt="coffee"
       />
-      <h1 style={{ margin: "10px 0", fontSize: "1.3rem" }}>{props.text}</h1>
+      <h1 style={{ margin: "10px 0", fontSize: "1.3rem" }}>
+        {props.coffeeName}
+      </h1>
       <div
         style={{
           display: "flex",
@@ -50,7 +57,7 @@ function CoffeeCard(props) {
           justifyContent: "space-between",
         }}
       >
-        <Button variant="outlined" sx={buttonStyle}>
+        <Button variant="outlined" sx={buttonStyle} onClick={handleButtonClick}>
           LEARN MORE
         </Button>
         <IconButton
