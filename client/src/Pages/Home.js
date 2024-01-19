@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../Components/Header.js";
 import Footer from "../Components/Footer.js";
 import Button from "@mui/material/Button";
+import { getRandomFact } from "../utils/randomInfoUtils.js";
 
+// TODO: LEARN MORE a basınca oradaki bilgi başka bir bilgiyle değişecek
 const Home = () => {
   // Styles
   const containerStyle = {
@@ -74,6 +76,10 @@ const Home = () => {
   const beanImageStyle = {
     height: "150px", // This keeps the aspect ratio of the image
   };
+  const [randomFact, setRandomFact] = useState(getRandomFact());
+  const handleLearnMore = () => {
+    setRandomFact(getRandomFact());
+  };
 
   return (
     <div style={containerStyle}>
@@ -117,6 +123,7 @@ const Home = () => {
             display: "flex",
             alignItems: "center",
             marginBottom: "1rem",
+            maxWidth: "1200px",
           }}
         >
           <img
@@ -124,12 +131,8 @@ const Home = () => {
             alt="Coffee Beans"
             style={beanImageStyle}
           />
-          <p style={{ margin: "3rem" }}>
-            5 million coffees are brewed each day.
-            <br />
-            Over 2.25 billion cups of coffee are consumed daily.
-          </p>
-          <Button variant="outlined" sx={buttonStyle}>
+          <p style={{ margin: "3rem" }}>{randomFact.fact}</p>
+          <Button variant="outlined" sx={buttonStyle} onClick={handleLearnMore}>
             LEARN MORE
           </Button>
         </div>
