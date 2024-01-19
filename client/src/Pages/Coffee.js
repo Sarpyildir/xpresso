@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../Components/Header.js";
 import Footer from "../Components/Footer.js";
 import CoffeeCard from "../Components/CoffeeCard.js";
-
+import { getCoffeeAll } from "../utils/coffeeUtils.js";
 const Coffee = () => {
   // Styles
   const containerStyle = {
@@ -25,9 +25,9 @@ const Coffee = () => {
     alignContent: "start",
   };
 
-  // Assuming you have a list of coffee data to map through
+  /* Assuming you have a list of coffee data to map through
   const coffees = [
-    { id: 1, name: "Espresso" },
+    { id: 1, name: "EspEWREWRresso" },
     { id: 2, name: "Americano" },
     { id: 3, name: "Latte" },
     { id: 4, name: "Mocha" },
@@ -41,8 +41,8 @@ const Coffee = () => {
     { id: 12, name: "Affogato" },
 
     // ... more coffees
-  ];
-
+  ];*/
+  const coffees = getCoffeeAll();
   return (
     <div style={containerStyle}>
       <Header />
