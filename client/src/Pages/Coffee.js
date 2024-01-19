@@ -25,23 +25,6 @@ const Coffee = () => {
     alignContent: "start",
   };
 
-  /* Assuming you have a list of coffee data to map through
-  const coffees = [
-    { id: 1, name: "EspEWREWRresso" },
-    { id: 2, name: "Americano" },
-    { id: 3, name: "Latte" },
-    { id: 4, name: "Mocha" },
-    { id: 5, name: "Cortado" },
-    { id: 6, name: "Flat White" },
-    { id: 7, name: "Cappuccino" },
-    { id: 8, name: "Macchiato" },
-    { id: 9, name: "Frappe" },
-    { id: 10, name: "Cold Brew" },
-    { id: 11, name: "Chai Tea" },
-    { id: 12, name: "Affogato" },
-
-    // ... more coffees
-  ];*/
   const coffees = getCoffeeAll();
   return (
     <div style={containerStyle}>

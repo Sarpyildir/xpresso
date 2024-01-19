@@ -98,23 +98,17 @@ const LearnCoffee = (props) => {
         <div
           style={{
             display: "flex",
+            flexDirection: "column",
             alignItems: "center",
             marginBottom: "1rem",
           }}
         >
-          <h2>How To Make:</h2>
-          <Button variant="outlined" sx={buttonStyle}>
-            AERO PRESS
-          </Button>
-          <Button variant="outlined" sx={buttonStyle}>
-            FRENCH PRESS
-          </Button>
-          <Button variant="outlined" sx={buttonStyle}>
-            MOKA POT
-          </Button>
-          <Button variant="outlined" sx={buttonStyle}>
-            INSTANT
-          </Button>
+          <h2>Ingredients:</h2>
+          <ul>
+            {coffee.ingredients.map((ingredient, index) => (
+              <li key={index}>{ingredient}</li>
+            ))}
+          </ul>
         </div>
       </div>
       <Footer />
