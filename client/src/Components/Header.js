@@ -50,9 +50,6 @@ function Header() {
           <a href="/bean" style={navItemStyle}>
             Bean
           </a>
-          <a href="/settings" style={navItemStyle}>
-            Settings
-          </a>
         </nav>
         <DropDownMenu username={currUser.username} />
       </header>
