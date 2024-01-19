@@ -1,5 +1,5 @@
 import React from "react";
-
+import DropDownMenu from "./DropDownMenu.js";
 function Header() {
   // TODO: Handling user's image.
   const headerStyle = {
@@ -22,11 +22,7 @@ function Header() {
     textDecoration: "none",
     color: "#594545",
   };
-  const userAreaStyle = {
-    display: "flex",
-    alignItems: "center",
-    gap: "10px",
-  };
+
   const hrStyle = {
     height: "20px",
     backgroundColor: "#9E7676",
@@ -36,7 +32,7 @@ function Header() {
   };
 
   //const currUser = JSON.parse(sessionStorage.getItem("user"));
-  const currUser = { name: "Sarp" };
+  const currUser = { username: "Sarpyildir" };
   return (
     <div>
       <header style={headerStyle}>
@@ -58,9 +54,7 @@ function Header() {
             Settings
           </a>
         </nav>
-        <div style={userAreaStyle}>
-          <div>{currUser.name}</div>
-        </div>
+        <DropDownMenu username={currUser.username} />
       </header>
       <hr style={hrStyle} />
     </div>
