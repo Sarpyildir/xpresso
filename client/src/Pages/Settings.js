@@ -8,7 +8,6 @@ import Button from "@mui/material/Button";
 
 // TODO: session storage ile userData'yı bağla.
 // TODO: ChangePassword butonu için fonksiyon yaz.
-// TODO: ChangePassword'un açacağı yeri ayarla.
 // TODO: Profile picture'ı handle et.
 const Settings = () => {
   // Styles

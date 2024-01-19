@@ -4,7 +4,6 @@ import Footer from "../Components/Footer.js";
 import Button from "@mui/material/Button";
 import { getRandomFact } from "../utils/randomInfoUtils.js";
 
-// TODO: LEARN MORE a basınca oradaki bilgi başka bir bilgiyle değişecek
 const Home = () => {
   // Styles
   const containerStyle = {
