@@ -26,7 +26,7 @@ const SettingsEdit = (props) => {
     alignItems: "center",
     justifyContent: "center",
   };
-  const [previewFile, setPreviewFile] = React.useState("");
+  const [previewFile, setPreviewFile] = useState("");
 
   const handleFileChange = async (event) => {
     const file = event.target.files[0];

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "semantic-ui-css/semantic.min.css";
 import TextField from "@mui/material/TextField";
 //TODO: save tuşununun fonksiyonalitesini ayarla.
