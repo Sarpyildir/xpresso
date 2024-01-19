@@ -3,10 +3,12 @@ import { useState } from "react";
 import Header from "../Components/Header.js";
 import Footer from "../Components/Footer.js";
 import SettingsEdit from "./SettingsEdit.js";
+import SettingsChangePass from "./SettingsChangePass.js";
 import Button from "@mui/material/Button";
 
 // TODO: session storage ile userData'yı bağla.
-// TODO: logout butonu için fonksiyon yaz.
+// TODO: ChangePassword butonu için fonksiyon yaz.
+// TODO: ChangePassword'un açacağı yeri ayarla.
 // TODO: Profile picture'ı handle et.
 const Settings = () => {
   // Styles
@@ -31,7 +33,7 @@ const Settings = () => {
     borderRadius: "5px",
     backgroundColor: "#FFF8EA",
     boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-    width: "300px",
+    width: "350px",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -42,14 +44,14 @@ const Settings = () => {
   const buttonStyle = {
     color: "#9E7676", // This is for the text color
     borderRadius: "25px", // Adjust the border-radius to match the button's curvature
-    padding: "10px 20px", // Adjust the padding to match the button's size
+    padding: "0px 20px 0px 20px", // Adjust the padding to match the button's size
     cursor: "pointer",
     borderWidth: "3px",
     borderColor: "#9E7676",
-    letterSpacing: "2px",
+    letterSpacing: "1px",
     fontWeight: "bold", // If the text is bold
     height: "50px",
-    marginLeft: "20px",
+    marginLeft: "15px",
     ":hover": {
       borderWidth: "3px",
       color: "#FFF8EA",
@@ -67,7 +69,8 @@ const Settings = () => {
     letterSpacing: "2px",
     fontWeight: "bold", // If the text is bold
     height: "50px",
-    marginLeft: "20px",
+    marginLeft: "10px",
+    marginRight: "15px",
     backgroundColor: "#9E7676",
     ":hover": {
       borderWidth: "3px",
@@ -85,11 +88,24 @@ const Settings = () => {
     boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
     width: "500px",
   };
+  const passwordFormStyle = {
+    marginRight: "50px",
+    padding: "20px",
+    border: "1px solid #ddd",
+    borderRadius: "5px",
+    backgroundColor: "#FFF8EA",
+    boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+    width: "400px",
+  };
   const [isEditing, setIsEditing] = useState(false);
+  const [isChangingPassword, setIsChangingPassword] = useState(false);
   const handleEdit = () => {
     setIsEditing((prevIsEditing) => !prevIsEditing);
   };
-  const storedUserData = JSON.parse(sessionStorage.getItem("user"));
+  const handleChangePassword = () => {
+    setIsChangingPassword((prevIsChangingPassword) => !prevIsChangingPassword);
+  };
+  //const storedUserData = JSON.parse(sessionStorage.getItem("user"));
   const userData = {
     username: "Sarpyildir",
     name: "Sarp",
@@ -100,11 +116,17 @@ const Settings = () => {
     <div style={containerStyle}>
       <Header />
       <div style={contentStyle}>
+        {isChangingPassword && (
+          <div style={passwordFormStyle}>
+            {/* Render your form here */}
+            <SettingsChangePass onCancel={handleChangePassword} />
+          </div>
+        )}
         <div style={userInfoStyle}>
           <h1>User Information</h1>
           <img
             src="https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
-            alt="Preview of uploaded image"
+            alt="Preview of uploaded file"
             style={{ width: "150px", height: "150px", margin: "10px" }}
           />
           <div>
@@ -120,8 +142,12 @@ const Settings = () => {
             <p>Email: {userData.email} </p>
           </div>
           <div>
-            <Button variant="outlined" sx={buttonStyle}>
-              Logout
+            <Button
+              variant="outlined"
+              sx={buttonStyle}
+              onClick={handleChangePassword}
+            >
+              Change Password
             </Button>
             <Button variant="outlined" sx={buttonStyle2} onClick={handleEdit}>
               Edit
