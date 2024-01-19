@@ -123,7 +123,6 @@ const Home = () => {
             display: "flex",
             alignItems: "center",
             marginBottom: "1rem",
-            maxWidth: "1200px",
           }}
         >
           <img
@@ -131,7 +130,17 @@ const Home = () => {
             alt="Coffee Beans"
             style={beanImageStyle}
           />
-          <p style={{ margin: "3rem" }}>{randomFact.fact}</p>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              marginBottom: "1rem",
+              maxWidth: "800px",
+            }}
+          >
+            <p>{randomFact.fact}</p>
+          </div>
+
           <Button variant="outlined" sx={buttonStyle} onClick={handleLearnMore}>
             LEARN MORE
           </Button>
