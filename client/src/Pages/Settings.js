@@ -51,7 +51,7 @@ const Settings = () => {
     letterSpacing: "1px",
     fontWeight: "bold", // If the text is bold
     height: "50px",
-    marginLeft: "15px",
+    marginLeft: "10px",
     ":hover": {
       borderWidth: "3px",
       color: "#FFF8EA",
@@ -70,7 +70,7 @@ const Settings = () => {
     fontWeight: "bold", // If the text is bold
     height: "50px",
     marginLeft: "10px",
-    marginRight: "15px",
+    marginRight: "10px",
     backgroundColor: "#9E7676",
     ":hover": {
       borderWidth: "3px",
