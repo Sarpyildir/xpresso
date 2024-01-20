@@ -39,7 +39,6 @@ const Favorites = () => {
           )}`
         );
         setCoffees(response.data); // Assuming the response data is the array of coffees
-        console.log(response.data);
       } catch (error) {
         // Error handling
       }
@@ -52,7 +51,6 @@ const Favorites = () => {
           )}`
         );
         setBeans(response.data); // Assuming the response data is the array of coffees
-        console.log(response.data);
       } catch (error) {
         // Error handling
       }

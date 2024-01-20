@@ -7,7 +7,7 @@ async function changePassword(req, res) {
     const newPassword = req.body.newPassword;
 
     const dbUser = await User.findOne({ email: loginEmail }).exec();
-    console.log(dbUser);
+
     if (dbUser) {
       if (dbUser.password === oldPassword) {
         // Change old password of user to new password

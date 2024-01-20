@@ -7,8 +7,6 @@ import { MenuItem as BaseMenuItem, menuItemClasses } from "@mui/base/MenuItem";
 import { styled } from "@mui/system";
 // TODO: Handle logout implementation
 export default function DropDownMenu(props) {
-  console.log(sessionStorage.getItem("user"));
-  console.log(localStorage.getItem("user"));
   const navigate = useNavigate();
   const createHandleMenuClick = (menuItem) => {
     return () => {
@@ -18,8 +16,6 @@ export default function DropDownMenu(props) {
   const handleLogout = () => {
     sessionStorage.clear();
     localStorage.clear();
-    console.log(sessionStorage.getItem("user"));
-    console.log(localStorage.getItem("user"));
     navigate("/login");
   };
 
