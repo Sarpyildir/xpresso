@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { getCoffeeByName } from "../utils/coffeeUtils.js";
+import { getBeanByName } from "../utils/beanUtils.js";
 import Header from "../Components/Header.js";
 import Footer from "../Components/Footer.js";
 
@@ -56,8 +56,8 @@ const LearnBean = (props) => {
     height: "auto", // This keeps the aspect ratio of the image
   };
 
-  const { coffeeName } = useParams();
-  const coffee = getCoffeeByName(coffeeName);
+  const { beanName } = useParams();
+  const bean = getBeanByName(beanName);
 
   return (
     <div style={containerStyle}>
@@ -66,32 +66,13 @@ const LearnBean = (props) => {
         <div style={contentContainerStyle}>
           <div style={textContainerStyle}>
             <h1 style={{ textAlign: "center", fontSize: "3rem" }}>
-              {coffee.name}
+              {bean.name}
             </h1>
-            <p>{coffee.description}</p>
+            <p>{bean.description}</p>
           </div>
           <div style={imageContainerStyle}>
-            <img
-              src="./coffeeCup.svg"
-              alt="Coffee Cup"
-              style={coffeeImageStyle}
-            />
+            <img src="./coffeeCup.svg" alt="Bean" style={coffeeImageStyle} />
           </div>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            marginBottom: "1rem",
-          }}
-        >
-          <h2>Ingredients:</h2>
-          <ul>
-            {coffee.ingredients.map((ingredient, index) => (
-              <li key={index}>{ingredient}</li>
-            ))}
-          </ul>
         </div>
       </div>
       <Footer />
