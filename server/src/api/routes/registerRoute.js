@@ -5,4 +5,4 @@ import { registerUser } from "../controllers/registerController.js";
 
 router.post("/newUser", registerUser);
 
-export { registerUser };
+export default router;
