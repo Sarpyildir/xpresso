@@ -61,6 +61,48 @@ async function addFavoriteBean(req, res) {
     res.status(500).json({ message: "Internal server error" });
   }
 }
+async function removeFavoriteCoffee(req, res) {
+  try {
+    const loginEmail = req.body.email;
+    const coffeeName = req.body.coffeeName;
+    const dbUser = await User.findOne({ email: loginEmail }).exec();
+
+    if (dbUser) {
+      // Remove the coffee with the specified name
+      dbUser.favoriteCoffee = dbUser.favoriteCoffee.filter(
+        (coffee) => coffee.name !== coffeeName
+      );
+      await dbUser.save();
+      res.status(200).json(dbUser);
+    } else {
+      res.status(404).json({ message: "User not found" });
+    }
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
+async function removeFavoriteBean(req, res) {
+  try {
+    const loginEmail = req.body.email;
+    const beanName = req.body.beanName;
+    const dbUser = await User.findOne({ email: loginEmail }).exec();
+
+    if (dbUser) {
+      // Remove the coffee with the specified name
+      dbUser.favoriteBean = dbUser.favoriteBean.filter(
+        (bean) => bean.name !== beanName
+      );
+      await dbUser.save();
+      res.status(200).json(dbUser);
+    } else {
+      res.status(404).json({ message: "User not found" });
+    }
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
 async function getFavoriteCoffees(req, res) {
   try {
     const loginEmail = req.query.email;
@@ -100,4 +142,6 @@ export {
   addFavoriteBean,
   getFavoriteCoffees,
   getFavoriteBeans,
+  removeFavoriteCoffee,
+  removeFavoriteBean,
 };
