@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import IconButton from "@mui/material/IconButton";
+import axios from "axios";
 
 function BeanCard(props) {
   // TODO: Handling user's image.
@@ -40,7 +41,32 @@ function BeanCard(props) {
   const handleButtonClick = () => {
     navigate(`/learnbean/${props.beanName}`);
   };
-
+  const userString = sessionStorage.getItem("user");
+  const user = JSON.parse(userString);
+  const handleFavoriteClick = async (e) => {
+    try {
+      const response = await axios.put(
+        "http://localhost:5000/api/user/addFavoriteBean",
+        {
+          email: user.email,
+          beanName: props.beanName,
+        }
+      );
+    } catch (error) {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.error("Error data:", error.response.data);
+        alert(error.response.data.message || "Error occurred");
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error("Error request:", error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error("Error", error.message);
+      }
+    }
+  };
   return (
     <div style={divStyle}>
       <img
@@ -62,6 +88,7 @@ function BeanCard(props) {
         <IconButton
           aria-label="favorite"
           style={{ backgroundColor: "#783F0B", width: "35px", height: "35px" }}
+          onClick={handleFavoriteClick}
         >
           <FavoriteBorderIcon sx={{ color: "white" }} />
         </IconButton>
