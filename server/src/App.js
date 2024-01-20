@@ -24,14 +24,17 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Import routes
+import userRoutes from "./api/routes/userRoute.js";
 import { getTest } from "./api/routes/test.js";
 import { registerUser } from "./api/routes/registerRoute.js";
 import { loginUser } from "./api/routes/loginRoute.js";
+//import { changePassword } from "./api/routes/userRoute.js";
 
 // Use routes
 app.use("/api/test", getTest);
 app.use("/api/register", registerUser);
 app.use("/api/login", loginUser);
+app.use("/api/user", userRoutes);
 
 app.get("/", (req, res) => {
   res.json("Hello World!");
