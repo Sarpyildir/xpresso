@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -35,33 +35,82 @@ function CoffeeCard(props) {
     width: "100%",
     height: "auto",
   };
+  const [favoriteState, setFavoriteState] = useState(false);
   const navigate = useNavigate();
   const handleButtonClick = () => {
     navigate(`/learncoffee/${props.coffeeName}`);
   };
   const userString = sessionStorage.getItem("user");
   const user = JSON.parse(userString);
-  const handleFavoriteClick = async (e) => {
-    try {
-      const response = await axios.put(
-        "http://localhost:5000/api/user/addFavoriteCoffee",
-        {
-          email: user.email,
-          coffeeName: props.coffeeName,
+  React.useEffect(() => {
+    const fetchFavoriteCoffee = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/user/getFavoriteCoffeeByName?email=${encodeURIComponent(
+            user.email
+          )}&coffeeName=${encodeURIComponent(props.coffeeName)}`
+        );
+        if (response.status === 200) {
+          setFavoriteState(true);
+        } else {
+          setFavoriteState(false);
         }
-      );
-    } catch (error) {
-      if (error.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
-        console.error("Error data:", error.response.data);
-        alert(error.response.data.message || "Error occurred");
-      } else if (error.request) {
-        // The request was made but no response was received
-        console.error("Error request:", error.request);
-      } else {
-        // Something happened in setting up the request that triggered an Error
-        console.error("Error", error.message);
+      } catch (error) {
+        // Error handling
+      }
+    };
+    fetchFavoriteCoffee();
+  }, []);
+  const handleFavoriteClick = async (e) => {
+    if (!favoriteState) {
+      // ADD FAVORITE COFFEE
+      setFavoriteState(!favoriteState);
+      try {
+        const response = await axios.put(
+          "http://localhost:5000/api/user/addFavoriteCoffee",
+          {
+            email: user.email,
+            coffeeName: props.coffeeName,
+          }
+        );
+      } catch (error) {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.error("Error data:", error.response.data);
+          alert(error.response.data.message || "Error occurred");
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.error("Error request:", error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.error("Error", error.message);
+        }
+      }
+    } else {
+      // REMOVE FAVORITE COFFEE
+      setFavoriteState(!favoriteState);
+      try {
+        const response = await axios.put(
+          "http://localhost:5000/api/user/removeFavoriteCoffee",
+          {
+            email: user.email,
+            coffeeName: props.coffeeName,
+          }
+        );
+      } catch (error) {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.error("Error data:", error.response.data);
+          alert(error.response.data.message || "Error occurred");
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.error("Error request:", error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.error("Error", error.message);
+        }
       }
     }
   };

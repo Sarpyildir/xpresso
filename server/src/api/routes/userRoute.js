@@ -9,10 +9,14 @@ import {
   getFavoriteCoffees,
   removeFavoriteBean,
   removeFavoriteCoffee,
+  getFavoriteCoffeeByName,
+  getFavoriteBeanByName,
 } from "../controllers/userController.js";
 
 router.get("/getFavoriteCoffees", getFavoriteCoffees);
 router.get("/getFavoriteBeans", getFavoriteBeans);
+router.get("/getFavoriteCoffeeByName", getFavoriteCoffeeByName);
+router.get("/getFavoriteBeanByName", getFavoriteBeanByName);
 
 router.put("/changePassword", changePassword);
 router.put("/addFavoriteCoffee", addFavoriteCoffee);

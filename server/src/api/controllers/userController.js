@@ -135,6 +135,56 @@ async function getFavoriteBeans(req, res) {
     res.status(500).json({ message: "Internal server error" });
   }
 }
+async function getFavoriteCoffeeByName(req, res) {
+  try {
+    const loginEmail = req.query.email; // Assuming email is passed as a query parameter
+    const coffeeName = req.query.coffeeName; // Assuming coffeeName is passed as a query parameter
+    const dbUser = await User.findOne({ email: loginEmail }).exec();
+
+    if (dbUser) {
+      // Find the coffee with the specified name
+      const favoriteCoffee = dbUser.favoriteCoffee.find(
+        (coffee) => coffee.name === coffeeName
+      );
+      console.log("Fav Coffee: " + favoriteCoffee);
+      if (favoriteCoffee) {
+        res.status(200).json(favoriteCoffee);
+      } else {
+        res.status(404).json({ message: "Favorite coffee not found" });
+      }
+    } else {
+      res.status(404).json({ message: "User not found" });
+    }
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
+async function getFavoriteBeanByName(req, res) {
+  try {
+    const loginEmail = req.query.email; // Assuming email is passed as a query parameter
+    const beanName = req.query.beanName; // Assuming coffeeName is passed as a query parameter
+    const dbUser = await User.findOne({ email: loginEmail }).exec();
+
+    if (dbUser) {
+      // Find the coffee with the specified name
+      const favoriteBean = dbUser.favoriteBean.find(
+        (bean) => bean.name === beanName
+      );
+
+      if (favoriteBean) {
+        res.status(200).json(favoriteBean);
+      } else {
+        res.status(404).json({ message: "Favorite bean not found" });
+      }
+    } else {
+      res.status(404).json({ message: "User not found" });
+    }
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
 
 export {
   changePassword,
@@ -144,4 +194,6 @@ export {
   getFavoriteBeans,
   removeFavoriteCoffee,
   removeFavoriteBean,
+  getFavoriteCoffeeByName,
+  getFavoriteBeanByName,
 };
