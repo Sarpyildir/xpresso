@@ -77,7 +77,6 @@ const Login = () => {
         sessionStorage.setItem("user", JSON.stringify(userData));
         // to retrieve data: const storedUserData = JSON.parse(sessionStorage.getItem('user'));
 
-        // TODO: navigation'ı home page'i yapınca ona ayarla.
         navigate("/");
       })
       .catch((err) => {

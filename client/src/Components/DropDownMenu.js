@@ -5,7 +5,7 @@ import { Menu } from "@mui/base/Menu";
 import { MenuButton as BaseMenuButton } from "@mui/base/MenuButton";
 import { MenuItem as BaseMenuItem, menuItemClasses } from "@mui/base/MenuItem";
 import { styled } from "@mui/system";
-// TODO: Handle logout implementation
+
 export default function DropDownMenu(props) {
   const navigate = useNavigate();
   const createHandleMenuClick = (menuItem) => {

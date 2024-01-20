@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "semantic-ui-css/semantic.min.css";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
-//TODO: save tuşununun fonksiyonalitesini ayarla.
+
 const SettingsChangePass = (props) => {
   const gridContainerStyle = {
     height: "100%",
