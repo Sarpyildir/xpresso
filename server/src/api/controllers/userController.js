@@ -61,5 +61,43 @@ async function addFavoriteBean(req, res) {
     res.status(500).json({ message: "Internal server error" });
   }
 }
+async function getFavoriteCoffees(req, res) {
+  try {
+    const loginEmail = req.query.email;
+    const dbUser = await User.findOne({ email: loginEmail }).exec();
 
-export { changePassword, addFavoriteCoffee, addFavoriteBean };
+    if (dbUser) {
+      const favoriteCoffees = dbUser.favoriteCoffee;
+      res.status(200).json(favoriteCoffees);
+    } else {
+      res.status(404).json({ message: "User not found" });
+    }
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
+async function getFavoriteBeans(req, res) {
+  try {
+    const loginEmail = req.query.email;
+    const dbUser = await User.findOne({ email: loginEmail }).exec();
+
+    if (dbUser) {
+      const favoriteBeans = dbUser.favoriteBean;
+      res.status(200).json(favoriteBeans);
+    } else {
+      res.status(404).json({ message: "User not found" });
+    }
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
+
+export {
+  changePassword,
+  addFavoriteCoffee,
+  addFavoriteBean,
+  getFavoriteCoffees,
+  getFavoriteBeans,
+};
