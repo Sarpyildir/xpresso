@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { getCoffeeByName } from "../utils/coffeeUtils.js";
 import Header from "../Components/Header.js";
 import Footer from "../Components/Footer.js";
-import Button from "@mui/material/Button";
 
 const LearnBean = (props) => {
   // Styles
@@ -56,23 +55,7 @@ const LearnBean = (props) => {
     maxHeight: "100%",
     height: "auto", // This keeps the aspect ratio of the image
   };
-  const buttonStyle = {
-    color: "#FFF8EA", // This is for the text color
-    borderRadius: "25px", // Adjust the border-radius to match the button's curvature
-    padding: "10px 20px", // Adjust the padding to match the button's size
-    cursor: "pointer",
-    borderWidth: "3px",
-    borderColor: "#FFF8EA",
-    letterSpacing: "2px",
-    fontWeight: "bold", // If the text is bold
-    height: "50px",
-    marginLeft: "20px",
-    ":hover": {
-      borderWidth: "3px",
-      color: "#9E7676",
-      borderColor: "#9E7676",
-    },
-  };
+
   const { coffeeName } = useParams();
   const coffee = getCoffeeByName(coffeeName);
 
