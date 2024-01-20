@@ -6,6 +6,7 @@ import Settings from "./Pages/Settings";
 import Coffee from "./Pages/Coffee";
 import Bean from "./Pages/Bean";
 import LearnCoffee from "./Pages/LearnCoffee";
+import LearnBean from "./Pages/LearnBean";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/coffee" element={<Coffee />} />
         <Route path="/bean" element={<Bean />} />
         <Route path="/learncoffee/:coffeeName" element={<LearnCoffee />} />
+        <Route path="/learnbean/:beanName" element={<LearnBean />} />
         <Route index path="/" element={<Home />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

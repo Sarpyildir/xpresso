@@ -1,8 +1,8 @@
 import React from "react";
 import Header from "../Components/Header.js";
 import Footer from "../Components/Footer.js";
-import CoffeeCard from "../Components/CoffeeCard.js";
-
+import BeanCard from "../Components/BeanCard.js";
+import { getBeanAll } from "../utils/beanUtils.js";
 const Bean = () => {
   // Styles
   const containerStyle = {
@@ -26,27 +26,14 @@ const Bean = () => {
   };
 
   // Assuming you have a list of coffee data to map through
-  const beans = [
-    { id: 1, name: "Robusta" },
-    { id: 2, name: "Arabica" },
-    { id: 3, name: "Liberica" },
-    { id: 4, name: "Excelsa" },
-    { id: 5, name: "Typica" },
-    { id: 6, name: "Geisha" },
-    { id: 7, name: "Bourbon" },
-    { id: 8, name: "Mundo Novo" },
-    { id: 9, name: "Mocha" },
-    { id: 10, name: "Jember" },
-    { id: 11, name: "Caturra" },
-    { id: 12, name: "PacaMara" },
-  ];
+  const beans = getBeanAll();
 
   return (
     <div style={containerStyle}>
       <Header />
       <div style={contentStyle}>
         {beans.map((bean) => (
-          <CoffeeCard key={bean.id} text={bean.name} />
+          <BeanCard key={bean.id} beanName={bean.name} />
         ))}
       </div>
       <Footer />
