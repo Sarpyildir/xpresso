@@ -4,12 +4,12 @@ import "../styles/doubleButton.css";
 
 function DoubleButton(props) {
   return (
-    <div class="ui buttons">
-      <button class="ui button" onClick={props.firstOnClick}>
+    <div className="ui buttons">
+      <button className="ui button" onClick={props.firstOnClick}>
         {props.firstText}
       </button>
-      <div class="or"></div>
-      <button class="ui positive button" onClick={props.secondOnClick}>
+      <div className="or"></div>
+      <button className="ui positive button" onClick={props.secondOnClick}>
         {props.secondText}
       </button>
     </div>

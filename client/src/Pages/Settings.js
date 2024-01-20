@@ -104,13 +104,14 @@ const Settings = () => {
   const handleChangePassword = () => {
     setIsChangingPassword((prevIsChangingPassword) => !prevIsChangingPassword);
   };
-  //const storedUserData = JSON.parse(sessionStorage.getItem("user"));
+  const userData = JSON.parse(sessionStorage.getItem("user"));
+  /*
   const userData = {
     username: "Sarpyildir",
     name: "Sarp",
     surname: "Yıldırım",
     email: "sarpyildir@gmail.com",
-  };
+  };*/
   return (
     <div style={containerStyle}>
       <Header />

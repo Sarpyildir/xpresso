@@ -59,9 +59,9 @@ const SettingsChangePass = (props) => {
             />
           </div>
           <div style={gridButtonsStyle}>
-            <div class="ui buttons">
+            <div className="ui buttons">
               <button
-                class="ui button"
+                className="ui button"
                 type="button"
                 style={{
                   backgroundColor: "#9E7676",
@@ -72,9 +72,9 @@ const SettingsChangePass = (props) => {
               >
                 Cancel
               </button>
-              <div class="or"></div>
+              <div className="or"></div>
               <button
-                class="ui positive button"
+                className="ui positive button"
                 type="submit"
                 style={{ borderRadius: "50px" }}
               >

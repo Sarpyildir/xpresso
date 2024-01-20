@@ -31,8 +31,8 @@ function Header() {
     border: "none",
   };
 
-  //const currUser = JSON.parse(sessionStorage.getItem("user"));
-  const currUser = { username: "Sarpyildir" };
+  const currUser = JSON.parse(sessionStorage.getItem("user"));
+  //const currUser = { username: "Sarpyildir" };
   return (
     <div>
       <header style={headerStyle}>
