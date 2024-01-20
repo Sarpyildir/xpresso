@@ -1,6 +1,6 @@
 import React from "react";
 import DropDownMenu from "./DropDownMenu.js";
-function Header() {
+function Header(props) {
   // TODO: Handling user's image.
   const headerStyle = {
     backgroundColor: "#FFF8EA",
@@ -36,7 +36,7 @@ function Header() {
   return (
     <div>
       <header style={headerStyle}>
-        <div style={logoStyle}>XPRESSO</div>
+        <div style={logoStyle}>{props.title || "XPRESSO"}</div>
         <nav style={navStyle}>
           <a href="/" style={navItemStyle}>
             Home

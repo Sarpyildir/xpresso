@@ -28,7 +28,7 @@ const Coffee = () => {
   const coffees = getCoffeeAll();
   return (
     <div style={containerStyle}>
-      <Header />
+      <Header title="COFFEES" />
       <div style={contentStyle}>
         {coffees.map((coffee) => (
           <CoffeeCard key={coffee.id} coffeeName={coffee.name} />

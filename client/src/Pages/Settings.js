@@ -114,7 +114,7 @@ const Settings = () => {
   };*/
   return (
     <div style={containerStyle}>
-      <Header />
+      <Header title="SETTINGS" />
       <div style={contentStyle}>
         {isChangingPassword && (
           <div style={passwordFormStyle}>

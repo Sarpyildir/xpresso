@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Header from "../Components/Header.js";
 import Footer from "../Components/Footer.js";
 import CoffeeCard from "../Components/CoffeeCard.js";
-import { getCoffeeAll } from "../utils/coffeeUtils.js";
 import axios from "axios";
 const Favorites = () => {
   // Styles
@@ -64,7 +63,7 @@ const Favorites = () => {
 
   return (
     <div style={containerStyle}>
-      <Header />
+      <Header title="FAVORITES" />
       <div style={contentStyle}>
         {coffees.map((coffee) => (
           <CoffeeCard key={coffee.id} coffeeName={coffee.name} />

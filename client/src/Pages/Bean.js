@@ -30,7 +30,7 @@ const Bean = () => {
 
   return (
     <div style={containerStyle}>
-      <Header />
+      <Header title="BEANS" />
       <div style={contentStyle}>
         {beans.map((bean) => (
           <BeanCard key={bean.id} beanName={bean.name} />
