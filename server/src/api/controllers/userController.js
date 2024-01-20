@@ -16,14 +16,14 @@ async function changePassword(req, res) {
         await dbUser.save();
         res.status(200).json(dbUser);
       } else {
-        res.status(401).json("Wrong password");
+        res.status(401).json({ message: "Wrong password" });
       }
     } else {
-      res.status(404).json("User not found");
+      res.status(404).json({ message: "User not found" });
     }
   } catch (e) {
     console.log(e);
-    res.status(500).json("Internal server error");
+    res.status(500).json({ message: "Internal server error" });
   }
 }
 

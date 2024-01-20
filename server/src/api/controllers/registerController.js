@@ -10,9 +10,9 @@ async function registerUser(req, res) {
     if (existingUser) {
       // Check why the user already exists and return ao appropriate error message
       if (existingUser.email === req.body.email) {
-        return res.status(400).json("Email already in use.");
+        return res.status(400).json({ message: "Email already in use." });
       } else if (existingUser.username === req.body.username) {
-        return res.status(400).json("Username already in use.");
+        return res.status(400).json({ message: "Username already in use." });
       }
     }
 
@@ -21,7 +21,7 @@ async function registerUser(req, res) {
     res.status(201).json(newUser);
   } catch (e) {
     console.log(e);
-    res.status(500).json("Internal server error");
+    res.status(500).json({ message: "Internal server error" });
   }
 }
 
