@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import IconButton from "@mui/material/IconButton";
 import axios from "axios";
 function CoffeeCard(props) {
@@ -36,6 +37,9 @@ function CoffeeCard(props) {
     height: "auto",
   };
   const [favoriteState, setFavoriteState] = useState(false);
+  const [favoriteIcon, setFavoriteIcon] = useState(
+    <FavoriteBorderIcon sx={{ color: "#FFF8EA" }} />
+  );
   const navigate = useNavigate();
   const handleButtonClick = () => {
     navigate(`/learncoffee/${props.coffeeName}`);
@@ -52,8 +56,10 @@ function CoffeeCard(props) {
         );
         if (response.status === 200) {
           setFavoriteState(true);
+          setFavoriteIcon(<FavoriteIcon sx={{ color: "#FFF8EA" }} />);
         } else {
           setFavoriteState(false);
+          setFavoriteIcon(<FavoriteBorderIcon sx={{ color: "#FFF8EA" }} />);
         }
       } catch (error) {
         // Error handling
@@ -113,6 +119,7 @@ function CoffeeCard(props) {
         }
       }
     }
+    window.location.reload();
   };
   return (
     <div style={divStyle}>
@@ -139,7 +146,7 @@ function CoffeeCard(props) {
           style={{ backgroundColor: "#783F0B", width: "35px", height: "35px" }}
           onClick={handleFavoriteClick}
         >
-          <FavoriteBorderIcon sx={{ color: "white" }} />
+          {favoriteIcon}
         </IconButton>
       </div>
     </div>

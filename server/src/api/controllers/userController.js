@@ -146,7 +146,6 @@ async function getFavoriteCoffeeByName(req, res) {
       const favoriteCoffee = dbUser.favoriteCoffee.find(
         (coffee) => coffee.name === coffeeName
       );
-      console.log("Fav Coffee: " + favoriteCoffee);
       if (favoriteCoffee) {
         res.status(200).json(favoriteCoffee);
       } else {
