@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "../Components/Header.js";
 import Footer from "../Components/Footer.js";
 import CoffeeCard from "../Components/CoffeeCard.js";
+import BeanCard from "../Components/BeanCard.js";
 import axios from "axios";
 const Favorites = () => {
   // Styles
@@ -69,7 +70,7 @@ const Favorites = () => {
           <CoffeeCard key={coffee.id} coffeeName={coffee.name} />
         ))}
         {beans.map((bean) => (
-          <CoffeeCard key={bean.id} coffeeName={bean.name} />
+          <BeanCard key={bean.id} beanName={bean.name} />
         ))}
       </div>
       <Footer />
