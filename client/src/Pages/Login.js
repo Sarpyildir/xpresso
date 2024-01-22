@@ -79,7 +79,7 @@ const Login = () => {
         sessionStorage.setItem("user", JSON.stringify(userData));
         // to retrieve data: const storedUserData = JSON.parse(sessionStorage.getItem('user'));
 
-        navigate("/");
+        navigate("/home");
       })
       .catch((err) => {
         if (err.response) {

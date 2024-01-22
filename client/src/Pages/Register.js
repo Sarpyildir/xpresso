@@ -222,7 +222,7 @@ const Register = () => {
               <DoubleButton
                 firstText="Have an account?"
                 firstOnClick={() => {
-                  navigate("/login");
+                  navigate("/");
                 }}
                 secondText="Register"
                 secondOnClick={(e) => {
