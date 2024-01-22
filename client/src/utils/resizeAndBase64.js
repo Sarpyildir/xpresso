@@ -1,5 +1,6 @@
 import Resizer from "react-image-file-resizer";
 
+// Resize and convert to base64
 const resizeAndBase64 = (file) => {
   return new Promise((resolve, reject) => {
     Resizer.imageFileResizer(
