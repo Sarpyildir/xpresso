@@ -6,7 +6,7 @@ import Checkbox from "@mui/material/Checkbox";
 import DoubleButton from "../Components/DoubleButton";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-//import resizeAndBase64 from "../../utils/resizeAndBase64";
+import resizeAndBase64 from "../../utils/resizeAndBase64";
 
 // TODO: form'da profil fotoğrafını da kaydetmeliyiz.
 // TODO: TERMS & CONDITIONS yazısı, yazıyı gösterme lazım - sona bırakılabilir.
@@ -55,6 +55,7 @@ const Register = () => {
   const [username, setUsername] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [profilePicture, setProfilePicture] = React.useState("");
   const [termsAndConditions, setTermsAndConditions] = React.useState(false);
   const handleRegister = (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
@@ -68,6 +69,7 @@ const Register = () => {
           username: username,
           email: email,
           password: password,
+          profilePicture: profilePicture,
         })
         .then((res) => {
           navigate("/login");
@@ -94,7 +96,7 @@ const Register = () => {
 
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
-    //file = await resizeAndBase64(file);
+    setProfilePicture(await resizeAndBase64(file));
     setPreviewFile(URL.createObjectURL(file));
     setButtonText("Change");
   };
@@ -138,11 +140,7 @@ const Register = () => {
             <div style={rightGridFormStyle}>
               <div style={{ display: "grid", placeItems: "center" }}>
                 {previewFile && (
-                  <img
-                    src={previewFile}
-                    alt="Preview of uploaded file"
-                    width={"200px"}
-                  />
+                  <img src={previewFile} alt="Preview of uploaded file" />
                 )}
               </div>
 
