@@ -7,7 +7,7 @@ const resizeAndBase64 = (file) => {
       file,
       300,
       300,
-      "JPEG",
+      "PNG",
       100,
       0,
       (uri) => {
