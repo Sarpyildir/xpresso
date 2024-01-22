@@ -55,7 +55,7 @@ const Login = () => {
     event.preventDefault(); // Prevent the default form submission behavior
     axios
       .post("http://localhost:5000/api/login/login", {
-        email: email,
+        email: email.toLowerCase(),
         password: password,
       })
       .then((res) => {

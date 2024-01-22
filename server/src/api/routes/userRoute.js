@@ -3,6 +3,7 @@ const router = express.Router();
 
 import {
   changePassword,
+  editProfile,
   addFavoriteCoffee,
   addFavoriteBean,
   getFavoriteBeans,
@@ -19,6 +20,7 @@ router.get("/getFavoriteCoffeeByName", getFavoriteCoffeeByName);
 router.get("/getFavoriteBeanByName", getFavoriteBeanByName);
 
 router.put("/changePassword", changePassword);
+router.put("/editProfile", editProfile);
 router.put("/addFavoriteCoffee", addFavoriteCoffee);
 router.put("/addFavoriteBean", addFavoriteBean);
 router.put("/removeFavoriteCoffee", removeFavoriteCoffee);

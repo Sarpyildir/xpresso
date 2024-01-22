@@ -4,19 +4,25 @@ async function registerUser(req, res) {
   try {
     // Check if a user with the same email or username already exists
     const existingUser = await User.findOne({
-      $or: [{ email: req.body.email }, { username: req.body.username }],
+      $or: [
+        { email: req.body.email.toLowerCase() },
+        { username: req.body.username },
+      ],
     });
 
     if (existingUser) {
       // Check why the user already exists and return ao appropriate error message
-      if (existingUser.email === req.body.email) {
+      if (existingUser.email.toLowerCase() === req.body.email.toLowerCase()) {
         return res.status(400).json({ message: "Email already in use." });
-      } else if (existingUser.username === req.body.username) {
+      } else if (
+        existingUser.username.toLowerCase() === req.body.username.toLowerCase()
+      ) {
         return res.status(400).json({ message: "Username already in use." });
       }
     }
 
     const newUser = new User(req.body);
+    newUser.email = newUser.email.toLowerCase();
     await newUser.save();
     res.status(201).json(newUser);
   } catch (e) {

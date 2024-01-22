@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import resizeAndBase64 from "../utils/resizeAndBase64";
 
-// TODO: form'da profil fotoğrafını da kaydetmeliyiz.
+// TODO: form'da profil fotoğrafını REQUIRED yap
 // TODO: TERMS & CONDITIONS yazısı, yazıyı gösterme lazım - sona bırakılabilir.
 
 const Register = () => {
@@ -67,7 +67,7 @@ const Register = () => {
           name: name,
           surname: surname,
           username: username,
-          email: email,
+          email: email.toLowerCase(),
           password: password,
           profilePicture: profilePicture,
         })

@@ -2,7 +2,7 @@ import User from "../models/user.js";
 
 async function changePassword(req, res) {
   try {
-    const loginEmail = req.body.email;
+    const loginEmail = req.body.email.toLowerCase();
     const oldPassword = req.body.password;
     const newPassword = req.body.newPassword;
 
@@ -26,10 +26,34 @@ async function changePassword(req, res) {
     res.status(500).json({ message: "Internal server error" });
   }
 }
+async function editProfile(req, res) {
+  try {
+    const loginEmail = req.body.oldEmail.toLowerCase();
+    console.log(loginEmail);
+    const dbUser = await User.findOne({ email: loginEmail }).exec();
+
+    if (dbUser) {
+      dbUser.email = req.body.email || dbUser.email;
+      dbUser.name = req.body.name || dbUser.name;
+      dbUser.surname = req.body.surname || dbUser.surname;
+      dbUser.username = req.body.username || dbUser.username;
+      dbUser.profilePicture = req.body.profilePicture || dbUser.profilePicture;
+
+      // Save user to database
+      await dbUser.save();
+      res.status(200).json(dbUser);
+    } else {
+      res.status(404).json({ message: "User not found" });
+    }
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
 
 async function addFavoriteCoffee(req, res) {
   try {
-    const loginEmail = req.body.email;
+    const loginEmail = req.body.email.toLowerCase();
     const dbUser = await User.findOne({ email: loginEmail }).exec();
 
     if (dbUser) {
@@ -46,7 +70,7 @@ async function addFavoriteCoffee(req, res) {
 }
 async function addFavoriteBean(req, res) {
   try {
-    const loginEmail = req.body.email;
+    const loginEmail = req.body.email.toLowerCase();
     const dbUser = await User.findOne({ email: loginEmail }).exec();
 
     if (dbUser) {
@@ -63,7 +87,7 @@ async function addFavoriteBean(req, res) {
 }
 async function removeFavoriteCoffee(req, res) {
   try {
-    const loginEmail = req.body.email;
+    const loginEmail = req.body.email.toLowerCase();
     const coffeeName = req.body.coffeeName;
     const dbUser = await User.findOne({ email: loginEmail }).exec();
 
@@ -84,7 +108,7 @@ async function removeFavoriteCoffee(req, res) {
 }
 async function removeFavoriteBean(req, res) {
   try {
-    const loginEmail = req.body.email;
+    const loginEmail = req.body.email.toLowerCase();
     const beanName = req.body.beanName;
     const dbUser = await User.findOne({ email: loginEmail }).exec();
 
@@ -105,7 +129,7 @@ async function removeFavoriteBean(req, res) {
 }
 async function getFavoriteCoffees(req, res) {
   try {
-    const loginEmail = req.query.email;
+    const loginEmail = req.query.email.toLowerCase();
     const dbUser = await User.findOne({ email: loginEmail }).exec();
 
     if (dbUser) {
@@ -121,7 +145,7 @@ async function getFavoriteCoffees(req, res) {
 }
 async function getFavoriteBeans(req, res) {
   try {
-    const loginEmail = req.query.email;
+    const loginEmail = req.query.email.toLowerCase();
     const dbUser = await User.findOne({ email: loginEmail }).exec();
 
     if (dbUser) {
@@ -137,7 +161,7 @@ async function getFavoriteBeans(req, res) {
 }
 async function getFavoriteCoffeeByName(req, res) {
   try {
-    const loginEmail = req.query.email; // Assuming email is passed as a query parameter
+    const loginEmail = req.query.email.toLowerCase(); // Assuming email is passed as a query parameter
     const coffeeName = req.query.coffeeName; // Assuming coffeeName is passed as a query parameter
     const dbUser = await User.findOne({ email: loginEmail }).exec();
 
@@ -161,7 +185,7 @@ async function getFavoriteCoffeeByName(req, res) {
 }
 async function getFavoriteBeanByName(req, res) {
   try {
-    const loginEmail = req.query.email; // Assuming email is passed as a query parameter
+    const loginEmail = req.query.email.toLowerCase(); // Assuming email is passed as a query parameter
     const beanName = req.query.beanName; // Assuming coffeeName is passed as a query parameter
     const dbUser = await User.findOne({ email: loginEmail }).exec();
 
@@ -187,6 +211,7 @@ async function getFavoriteBeanByName(req, res) {
 
 export {
   changePassword,
+  editProfile,
   addFavoriteCoffee,
   addFavoriteBean,
   getFavoriteCoffees,

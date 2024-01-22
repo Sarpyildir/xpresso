@@ -2,9 +2,10 @@ import User from "../models/user.js";
 
 async function loginUser(req, res) {
   try {
-    const loginEmail = req.body.email;
+    const loginEmail = req.body.email.toLowerCase();
     const loginPassword = req.body.password;
-
+    console.log("Email: " + loginEmail);
+    console.log(req.body);
     const dbUser = await User.findOne({ email: loginEmail }).exec();
     console.log(dbUser);
     if (dbUser) {

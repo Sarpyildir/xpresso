@@ -16,7 +16,7 @@ export default function DropDownMenu(props) {
   const handleLogout = () => {
     sessionStorage.clear();
     localStorage.clear();
-    navigate("/login");
+    navigate("/");
   };
 
   return (
