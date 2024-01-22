@@ -7,7 +7,7 @@ function Header(props) {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: "2rem 6rem",
+    padding: "1rem 6rem",
     fontSize: "18px",
   };
   const logoStyle = {
@@ -51,8 +51,21 @@ function Header(props) {
             Bean
           </a>
         </nav>
-        <img src={currUser.profilePicture} alt="Profile" width="50px" />
-        <DropDownMenu username={currUser.username} />
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <img
+            src={currUser.profilePicture}
+            alt="Profile"
+            width="50px"
+            style={{ borderRadius: "50%" }}
+          />
+          <DropDownMenu username={currUser.username} />
+        </div>
       </header>
       <hr style={hrStyle} />
     </div>
