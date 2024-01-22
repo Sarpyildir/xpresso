@@ -14,7 +14,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<LoginScreen />} />
+        <Route index path="/login" element={<LoginScreen />} />
         <Route path="/register" element={<RegisterationScreen />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/coffee" element={<Coffee />} />
@@ -22,7 +22,7 @@ function App() {
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/learncoffee/:coffeeName" element={<LearnCoffee />} />
         <Route path="/learnbean/:beanName" element={<LearnBean />} />
-        <Route index path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

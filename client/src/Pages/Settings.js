@@ -103,6 +103,7 @@ const Settings = () => {
     setIsChangingPassword((prevIsChangingPassword) => !prevIsChangingPassword);
   };
   const userData = JSON.parse(sessionStorage.getItem("user"));
+  console.log(userData);
   /*
   const userData = {
     username: "Sarpyildir",
@@ -123,7 +124,7 @@ const Settings = () => {
         <div style={userInfoStyle}>
           <h1>User Information</h1>
           <img
-            src="https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
+            src={userData.profilePicture}
             alt="Preview of uploaded file"
             style={{ width: "150px", height: "150px", margin: "10px" }}
           />

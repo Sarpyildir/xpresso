@@ -1,13 +1,14 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
-
+// created_at: { type: Date, default: Date.now },
 const userSchema = new Schema({
   name: String,
   surname: String,
   username: String,
   email: String,
   password: String,
-  created_at: Date,
+  profilePicture: String,
+  created_at: { type: Date, default: Date.now },
   favoriteCoffee: [
     {
       name: String,

@@ -60,11 +60,13 @@ const Login = () => {
       })
       .then((res) => {
         // Do not store password in local storage or session storage.
+        console.log(res);
         const userData = {
           email: res.data.email,
           name: res.data.name,
           surname: res.data.surname,
           username: res.data.username,
+          profilePicture: res.data.profilePicture,
           _id: res.data._id,
         };
 

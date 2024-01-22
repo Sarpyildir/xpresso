@@ -51,6 +51,7 @@ function Header(props) {
             Bean
           </a>
         </nav>
+        <img src={currUser.profilePicture} alt="Profile" width="50px" />
         <DropDownMenu username={currUser.username} />
       </header>
       <hr style={hrStyle} />
