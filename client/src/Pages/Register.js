@@ -72,7 +72,7 @@ const Register = () => {
           profilePicture: profilePicture,
         })
         .then((res) => {
-          navigate("/login");
+          navigate("/");
         })
         .catch((err) => {
           // Error handling

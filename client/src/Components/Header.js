@@ -7,7 +7,7 @@ function Header(props) {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: "1rem 6rem",
+    padding: "1rem 4rem",
     fontSize: "18px",
   };
   const logoStyle = {
@@ -62,7 +62,7 @@ function Header(props) {
             src={currUser.profilePicture}
             alt="Profile"
             width="50px"
-            style={{ borderRadius: "50%" }}
+            style={{ borderRadius: "50%", marginRight: "5px" }}
           />
           <DropDownMenu username={currUser.username} />
         </div>
