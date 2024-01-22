@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import FileUpload from "../Components/FileUpload.js";
 import resizeAndBase64 from "../utils/resizeAndBase64.js";
 import axios from "axios";
-//TODO: save tuşununun fonksiyonalitesini ayarla.
+
 const SettingsEdit = (props) => {
   const gridContainerStyle = {
     display: "grid",

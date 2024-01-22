@@ -6,7 +6,6 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import IconButton from "@mui/material/IconButton";
 import axios from "axios";
 function CoffeeCard(props) {
-  // TODO: Handling user's image.
   const divStyle = {
     width: "250px",
     backgroundColor: "#FFF8EA",

@@ -5,9 +5,7 @@ import Checkbox from "@mui/material/Checkbox";
 import DoubleButton from "../Components/DoubleButton";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-//import resizeAndBase64 from "../../utils/resizeAndBase64";
 
-// TODO: resizeAndBase64 'i incele.
 // TODO: Password'u bcrypt ile hashle (server side da yapılacaksa nasıl kontrol edeceğiz passwordler uyuyormu diye)
 
 const Login = () => {

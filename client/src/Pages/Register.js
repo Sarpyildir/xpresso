@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import resizeAndBase64 from "../utils/resizeAndBase64";
 
-// TODO: form'da profil fotoğrafını REQUIRED yap
 // TODO: TERMS & CONDITIONS yazısı, yazıyı gösterme lazım - sona bırakılabilir.
 
 const Register = () => {
@@ -61,6 +60,15 @@ const Register = () => {
     event.preventDefault(); // Prevent the default form submission behavior
     if (!termsAndConditions) {
       alert("Please accept terms and conditions");
+    } else if (
+      !name ||
+      !surname ||
+      !username ||
+      !email ||
+      !password ||
+      !profilePicture
+    ) {
+      alert("Please fill in all fields");
     } else {
       axios
         .post("http://localhost:5000/api/register/newUser", {

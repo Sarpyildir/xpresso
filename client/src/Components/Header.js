@@ -1,7 +1,6 @@
 import React from "react";
 import DropDownMenu from "./DropDownMenu.js";
 function Header(props) {
-  // TODO: Handling user's image.
   const headerStyle = {
     backgroundColor: "#FFF8EA",
     display: "flex",

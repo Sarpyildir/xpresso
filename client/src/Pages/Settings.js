@@ -6,7 +6,6 @@ import SettingsEdit from "./SettingsEdit.js";
 import SettingsChangePass from "./SettingsChangePass.js";
 import Button from "@mui/material/Button";
 
-// TODO: Profile picture'ı handle et.
 const Settings = () => {
   // Styles
   const containerStyle = {
