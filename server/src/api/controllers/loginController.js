@@ -6,7 +6,6 @@ async function loginUser(req, res) {
     const loginEmail = req.body.email.toLowerCase();
     const loginPassword = req.body.password;
     const dbUser = await User.findOne({ email: loginEmail }).exec();
-    console.log(dbUser);
     if (dbUser) {
       if (await bcrypt.compare(loginPassword, dbUser.password)) {
         res.status(200).json(dbUser);

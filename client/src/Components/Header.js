@@ -37,7 +37,7 @@ function Header(props) {
       <header style={headerStyle}>
         <div style={logoStyle}>{props.title || "XPRESSO"}</div>
         <nav style={navStyle}>
-          <a href="/" style={navItemStyle}>
+          <a href="/home" style={navItemStyle}>
             Home
           </a>
           <a href="/blog" style={navItemStyle}>
