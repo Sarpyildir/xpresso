@@ -8,6 +8,8 @@ import Bean from "./Pages/Bean";
 import LearnCoffee from "./Pages/LearnCoffee";
 import LearnBean from "./Pages/LearnBean";
 import Favorites from "./Pages/Favorites";
+import Blog from "./Pages/Blog";
+import SearchBar from "./Components/SearchBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
         <Route path="/learncoffee/:coffeeName" element={<LearnCoffee />} />
         <Route path="/learnbean/:beanName" element={<LearnBean />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/searchbar" element={<SearchBar />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
