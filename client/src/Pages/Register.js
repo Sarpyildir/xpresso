@@ -151,7 +151,7 @@ const Register = () => {
                   <img
                     src={previewFile}
                     alt="Preview of uploaded file"
-                    width="200px"
+                    width="100px"
                   />
                 )}
               </div>
