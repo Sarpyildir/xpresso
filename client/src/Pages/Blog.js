@@ -3,7 +3,7 @@ import Header from "../Components/Header.js";
 import Footer from "../Components/Footer.js";
 import SearchBar from "../Components/SearchBar.js";
 import PostButton from "../Components/PostButton.js";
-import Button from "@mui/material/Button";
+import BlogCard from "../Components/BlogCard.js";
 
 const Blog = () => {
   // Styles
@@ -52,11 +52,21 @@ const Blog = () => {
               justifyContent: "space-between",
               alignItems: "center",
               width: "100%",
+              marginBottom: "2rem",
             }}
           >
             <SearchBar />
-            <PostButton />
+            <PostButton text="post" type="post" />
           </div>
+          <BlogCard />
+          <BlogCard />
+          <BlogCard />
+          <BlogCard />
+          <BlogCard />
+          <BlogCard />
+          <BlogCard />
+          <BlogCard />
+          <BlogCard />
         </div>
       </div>
       <Footer />
