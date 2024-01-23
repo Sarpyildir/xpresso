@@ -1,15 +1,14 @@
 import User from "../models/user.js";
+import bcrypt from "bcrypt";
 
 async function loginUser(req, res) {
   try {
     const loginEmail = req.body.email.toLowerCase();
     const loginPassword = req.body.password;
-    console.log("Email: " + loginEmail);
-    console.log(req.body);
     const dbUser = await User.findOne({ email: loginEmail }).exec();
     console.log(dbUser);
     if (dbUser) {
-      if (dbUser.password === loginPassword) {
+      if (await bcrypt.compare(loginPassword, dbUser.password)) {
         res.status(200).json(dbUser);
       } else {
         res.status(401).json({ message: "Wrong password" });

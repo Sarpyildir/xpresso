@@ -1,5 +1,5 @@
 import User from "../models/user.js";
-
+import bcrypt from "bcrypt";
 async function changePassword(req, res) {
   try {
     const loginEmail = req.body.email.toLowerCase();
@@ -9,9 +9,9 @@ async function changePassword(req, res) {
     const dbUser = await User.findOne({ email: loginEmail }).exec();
 
     if (dbUser) {
-      if (dbUser.password === oldPassword) {
+      if (await bcrypt.compare(oldPassword, dbUser.password)) {
         // Change old password of user to new password
-        dbUser.password = newPassword;
+        dbUser.password = await bcrypt.hash(newPassword, 10);
         // Save user to database
         await dbUser.save();
         res.status(200).json(dbUser);

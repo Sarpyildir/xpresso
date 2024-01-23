@@ -1,4 +1,5 @@
 import User from "../models/user.js";
+import bcrypt from "bcrypt";
 
 async function registerUser(req, res) {
   try {
@@ -23,6 +24,7 @@ async function registerUser(req, res) {
 
     const newUser = new User(req.body);
     newUser.email = newUser.email.toLowerCase();
+    newUser.password = await bcrypt.hash(newUser.password, 10);
     await newUser.save();
     res.status(201).json(newUser);
   } catch (e) {
