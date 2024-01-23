@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../Components/Header.js";
 import Footer from "../Components/Footer.js";
 import SearchBar from "../Components/SearchBar.js";
@@ -10,6 +10,8 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import fetchUser from "../utils/fetchUser.js";
+import axios from "axios";
 
 const Blog = () => {
   // Styles
@@ -43,9 +45,24 @@ const Blog = () => {
     boxSizing: "border-box",
     width: "100%",
   };
+  const [user, setUser] = useState(null);
   const [open, setOpen] = useState(false);
   const [blogTitle, setBlogTitle] = useState("");
   const [blogDescription, setBlogDescription] = useState("");
+  useEffect(() => {
+    const userString = sessionStorage.getItem("user");
+    const sessionUser = JSON.parse(userString);
+    const userEmail = sessionUser.email;
+    fetchUser(userEmail)
+      .then((userData) => {
+        console.log("Fetched User:", userData.data);
+        setUser(userData.data);
+        console.log("Setted User:", user);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch user:", error);
+      });
+  }, []);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -53,9 +70,24 @@ const Blog = () => {
     setOpen(false);
   };
   const handlePost = () => {
-    // Implement your logic to post the blog details
-    console.log(blogTitle, blogDescription);
-    setOpen(false);
+    if (!blogTitle.trim() || !blogDescription.trim()) {
+      alert("Please fill all the fields");
+    } else {
+      console.log(blogTitle, blogDescription);
+      axios
+        .post("http://localhost:5000/api/blog/postBlog", {
+          title: blogTitle,
+          description: blogDescription,
+          postedBy: user._id,
+        })
+        .then((res) => {
+          console.log(res.data);
+          setOpen(false);
+          setBlogTitle("");
+          setBlogDescription("");
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   return (
@@ -78,14 +110,6 @@ const Blog = () => {
             <SearchBar />
             <PostButton text="post" type="post" onClick={handleClickOpen} />
           </div>
-          <BlogCard />
-          <BlogCard />
-          <BlogCard />
-          <BlogCard />
-          <BlogCard />
-          <BlogCard />
-          <BlogCard />
-          <BlogCard />
           <BlogCard />
         </div>
       </div>

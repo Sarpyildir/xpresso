@@ -2,6 +2,7 @@ import express from "express";
 const router = express.Router();
 
 import {
+  getUser,
   changePassword,
   editProfile,
   addFavoriteCoffee,
@@ -14,6 +15,7 @@ import {
   getFavoriteBeanByName,
 } from "../controllers/userController.js";
 
+router.get("/getUser", getUser);
 router.get("/getFavoriteCoffees", getFavoriteCoffees);
 router.get("/getFavoriteBeans", getFavoriteBeans);
 router.get("/getFavoriteCoffeeByName", getFavoriteCoffeeByName);
