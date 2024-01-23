@@ -4,6 +4,12 @@ import Footer from "../Components/Footer.js";
 import SearchBar from "../Components/SearchBar.js";
 import PostButton from "../Components/PostButton.js";
 import BlogCard from "../Components/BlogCard.js";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
 const Blog = () => {
   // Styles
@@ -37,6 +43,20 @@ const Blog = () => {
     boxSizing: "border-box",
     width: "100%",
   };
+  const [open, setOpen] = useState(false);
+  const [blogTitle, setBlogTitle] = useState("");
+  const [blogDescription, setBlogDescription] = useState("");
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClickClose = () => {
+    setOpen(false);
+  };
+  const handlePost = () => {
+    // Implement your logic to post the blog details
+    console.log(blogTitle, blogDescription);
+    setOpen(false);
+  };
 
   return (
     <div style={containerStyle}>
@@ -56,7 +76,7 @@ const Blog = () => {
             }}
           >
             <SearchBar />
-            <PostButton text="post" type="post" />
+            <PostButton text="post" type="post" onClick={handleClickOpen} />
           </div>
           <BlogCard />
           <BlogCard />
@@ -70,6 +90,43 @@ const Blog = () => {
         </div>
       </div>
       <Footer />
+      <Dialog
+        open={open}
+        onClose={handleClickClose}
+        maxWidth="md"
+        fullWidth={true}
+      >
+        <DialogTitle>Post Your Blog</DialogTitle>
+        <DialogContent>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Title of Blog"
+            type="text"
+            fullWidth
+            variant="standard"
+            value={blogTitle}
+            onChange={(e) => setBlogTitle(e.target.value)}
+          />
+          <TextField
+            margin="dense"
+            id="description"
+            label="Description"
+            type="text"
+            fullWidth
+            variant="standard"
+            multiline
+            rows={7}
+            value={blogDescription}
+            onChange={(e) => setBlogDescription(e.target.value)}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClickClose}>Cancel</Button>
+          <Button onClick={handlePost}>Post</Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 };

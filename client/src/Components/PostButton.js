@@ -6,6 +6,7 @@ export default function PostButton(props) {
   if (props.type.toLowerCase() === "post") {
     return (
       <Button
+        onClick={props.onClick}
         variant="contained"
         endIcon={<AddCircleOutlineIcon />}
         sx={{
