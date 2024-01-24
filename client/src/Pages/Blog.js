@@ -11,6 +11,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import fetchUser from "../utils/fetchUser.js";
+import fetchBlog from "../utils/fetchBlog.js";
 import axios from "axios";
 
 const Blog = () => {
@@ -46,6 +47,7 @@ const Blog = () => {
     width: "100%",
   };
   const [user, setUser] = useState(null);
+  const [blogs, setBlogs] = useState([]);
   const [open, setOpen] = useState(false);
   const [blogTitle, setBlogTitle] = useState("");
   const [blogDescription, setBlogDescription] = useState("");
@@ -61,6 +63,15 @@ const Blog = () => {
       })
       .catch((error) => {
         console.error("Failed to fetch user:", error);
+      });
+    fetchBlog()
+      .then((blogData) => {
+        console.log("Fetched Blogs:", blogData.data);
+        setBlogs(blogData.data);
+        console.log("Setted Blogs:", blogs);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch blogs:", error);
       });
   }, []);
   const handleClickOpen = () => {
@@ -110,7 +121,14 @@ const Blog = () => {
             <SearchBar />
             <PostButton text="post" type="post" onClick={handleClickOpen} />
           </div>
-          <BlogCard />
+          {blogs.map((blog, index) => (
+            <BlogCard
+              key={index}
+              _id={blog._id}
+              title={blog.title}
+              description={blog.description}
+            />
+          ))}
         </div>
       </div>
       <Footer />

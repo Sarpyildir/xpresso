@@ -1,7 +1,7 @@
 import React from "react";
 import PostButton from "./PostButton.js";
-
-function BlogCard() {
+import { useNavigate } from "react-router-dom";
+function BlogCard(props) {
   const cardStyle = {
     display: "flex",
     alignItems: "center",
@@ -17,6 +17,7 @@ function BlogCard() {
     flexDirection: "row", // Set the direction to row
     alignItems: "center", // Align items vertically
     justifyContent: "space-between", // Space between content and button
+    width: "100%",
   };
 
   const textContentStyle = {
@@ -44,7 +45,17 @@ function BlogCard() {
     width: "50px",
     height: "50px",
   };
+  const navigate = useNavigate();
+  var shortDescription = props.description;
+  if (props.description.length > 275) {
+    shortDescription = props.description.substring(0, 275) + "...";
+  } else {
+    shortDescription = props.description;
+  }
 
+  const handleReadClick = () => {
+    navigate(`/blog/${props._id}`);
+  };
   return (
     <div style={cardStyle}>
       <img
@@ -54,14 +65,10 @@ function BlogCard() {
       />
       <div style={contentStyle}>
         <div style={textContentStyle}>
-          <div style={titleStyle}>TITLE OF BLOG</div>
-          <div style={descriptionStyle}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-            quis facilisis mi. Phasellus malesuada arcu sit amet dui rhoncus,
-            sagittis quam ...
-          </div>
+          <div style={titleStyle}>{props.title}</div>
+          <div style={descriptionStyle}>{shortDescription}</div>
         </div>
-        <PostButton text="read" type="read" />
+        <PostButton text="read" type="read" onClick={handleReadClick} />
       </div>
     </div>
   );
