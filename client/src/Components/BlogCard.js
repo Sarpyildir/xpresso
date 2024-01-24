@@ -49,12 +49,13 @@ function BlogCard(props) {
   var shortDescription = props.description;
   if (props.description.length > 275) {
     shortDescription = props.description.substring(0, 275) + "...";
-  } else {
-    shortDescription = props.description;
   }
 
   const handleReadClick = () => {
+    /*
     navigate(`/blog/${props._id}`);
+    */
+    navigate(`/blogread`);
   };
   return (
     <div style={cardStyle}>

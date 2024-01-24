@@ -28,5 +28,15 @@ async function getAllBlogs(req, res) {
     res.status(500).json({ message: "Internal server error" });
   }
 }
+async function getBlogById(req, res) {
+  try {
+    const blogId = req.query._id;
+    const dbBlog = await Blog.findOne({ _id: blogId }).exec();
+    res.status(201).json(dbBlog);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
 
-export { postBlog, getAllBlogs };
+export { postBlog, getAllBlogs, getBlogById };

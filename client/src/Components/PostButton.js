@@ -26,6 +26,7 @@ export default function PostButton(props) {
   } else {
     return (
       <Button
+        onClick={props.onClick}
         variant="contained"
         sx={{
           borderRadius: "5px",

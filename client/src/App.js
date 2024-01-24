@@ -9,6 +9,7 @@ import LearnCoffee from "./Pages/LearnCoffee";
 import LearnBean from "./Pages/LearnBean";
 import Favorites from "./Pages/Favorites";
 import Blog from "./Pages/Blog";
+import BlogPost from "./Pages/BlogPost";
 import SearchBar from "./Components/SearchBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/learnbean/:beanName" element={<LearnBean />} />
         <Route path="/home" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blogread" element={<BlogPost />} />
         <Route path="/searchbar" element={<SearchBar />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
