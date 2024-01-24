@@ -11,7 +11,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import fetchUser from "../utils/fetchUser.js";
-import fetchBlog from "../utils/fetchBlog.js";
+import { fetchAllBlogs } from "../utils/fetchBlog.js";
 import axios from "axios";
 
 const Blog = () => {
@@ -64,7 +64,7 @@ const Blog = () => {
       .catch((error) => {
         console.error("Failed to fetch user:", error);
       });
-    fetchBlog()
+    fetchAllBlogs()
       .then((blogData) => {
         console.log("Fetched Blogs:", blogData.data);
         setBlogs(blogData.data);

@@ -27,7 +27,7 @@ function App() {
         <Route path="/learnbean/:beanName" element={<LearnBean />} />
         <Route path="/home" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
-        <Route path="/blogread" element={<BlogPost />} />
+        <Route path="/blogread/:blogId" element={<BlogPost />} />
         <Route path="/searchbar" element={<SearchBar />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
