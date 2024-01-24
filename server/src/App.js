@@ -26,15 +26,10 @@ app.use(express.json());
 // Import routes
 import userRoutes from "./api/routes/userRoute.js";
 import loginRoutes from "./api/routes/loginRoute.js";
-import { getTest } from "./api/routes/test.js";
 import registerRoutes from "./api/routes/registerRoute.js";
 import blogRoutes from "./api/routes/blogRoute.js";
 
-//import { loginUser } from "./api/routes/loginRoute.js";
-//import { changePassword } from "./api/routes/userRoute.js";
-
 // Use routes
-app.use("/api/test", getTest);
 app.use("/api/register", registerRoutes);
 app.use("/api/login", loginRoutes);
 app.use("/api/user", userRoutes);
