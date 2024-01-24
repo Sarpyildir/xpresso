@@ -30,7 +30,7 @@ async function getAllBlogs(req, res) {
 }
 async function getBlogById(req, res) {
   try {
-    const blogId = req.query._id;
+    const blogId = req.query.blogId;
     const dbBlog = await Blog.findOne({ _id: blogId }).exec();
     res.status(201).json(dbBlog);
   } catch (error) {

@@ -8,7 +8,7 @@ async function fetchAllBlogs() {
 }
 async function fetchBlogById(blogId) {
   const response = await axios.get(
-    "http://localhost:5000/api/blog/getAllBlogs"
+    "http://localhost:5000/api/blog/getBlogById?blogId=" + blogId
   );
   return response;
 }

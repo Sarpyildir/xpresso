@@ -52,10 +52,7 @@ function BlogCard(props) {
   }
 
   const handleReadClick = () => {
-    /*
     navigate(`/blog/${props._id}`);
-    */
-    navigate(`/blogread`);
   };
   return (
     <div style={cardStyle}>

@@ -92,10 +92,10 @@ const Blog = () => {
           postedBy: user._id,
         })
         .then((res) => {
-          console.log(res.data);
           setOpen(false);
           setBlogTitle("");
           setBlogDescription("");
+          window.location.reload();
         })
         .catch((err) => console.log(err));
     }
