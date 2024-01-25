@@ -7,6 +7,7 @@ import { formatDate } from "../utils/formatDate.js";
 import Header from "../Components/Header.js";
 import Footer from "../Components/Footer.js";
 import PostButton from "../Components/PostButton.js";
+import axios from "axios";
 
 const MyBlogPost = (props) => {
   // Styles
@@ -83,7 +84,32 @@ const MyBlogPost = (props) => {
   const handleBackClick = () => {
     navigate("/myblogs");
   };
-  const handleSaveClick = () => {};
+  const handleSaveClick = async () => {
+    try {
+      const response = await axios.put(
+        "http://localhost:5000/api/blog/updateBlog",
+        {
+          blogId: blogData._id,
+          title: editableTitle,
+          description: editableDescription,
+        }
+      );
+      navigate("/myblogs");
+    } catch (error) {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.error("Error data:", error.response.data);
+        alert(error.response.data.message || "Error occurred");
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error("Error request:", error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error("Error", error.message);
+      }
+    }
+  };
 
   return (
     <div style={containerStyle}>

@@ -51,5 +51,21 @@ async function getBlogsByUserId(req, res) {
     res.status(500).json({ message: "Internal server error" });
   }
 }
-
-export { postBlog, getAllBlogs, getBlogById, getBlogsByUserId };
+async function updateBlog(req, res) {
+  try {
+    const blogId = req.body.blogId;
+    const dbBlog = await Blog.findOne({ _id: blogId }).exec();
+    if (dbBlog) {
+      dbBlog.title = req.body.title;
+      dbBlog.description = req.body.description;
+      await dbBlog.save();
+      res.status(201).json(dbBlog);
+    } else {
+      res.status(404).json({ message: "Blog not found" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
+export { postBlog, getAllBlogs, getBlogById, getBlogsByUserId, updateBlog };
