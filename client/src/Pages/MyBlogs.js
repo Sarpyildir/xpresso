@@ -11,7 +11,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import fetchUser from "../utils/fetchUser.js";
-import { fetchAllBlogs } from "../utils/fetchBlog.js";
+import { fetchMyBlogs } from "../utils/fetchBlog.js";
 import axios from "axios";
 
 const MyBlogs = () => {
@@ -57,14 +57,12 @@ const MyBlogs = () => {
     const userEmail = sessionUser.email;
     fetchUser(userEmail)
       .then((userData) => {
-        console.log("Fetched User:", userData.data);
         setUser(userData.data);
-        console.log("Setted User:", user);
       })
       .catch((error) => {
         console.error("Failed to fetch user:", error);
       });
-    fetchAllBlogs()
+    fetchMyBlogs()
       .then((blogData) => {
         console.log("Fetched Blogs:", blogData.data);
         setBlogs(blogData.data);

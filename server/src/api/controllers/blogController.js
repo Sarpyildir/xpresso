@@ -38,5 +38,18 @@ async function getBlogById(req, res) {
     res.status(500).json({ message: "Internal server error" });
   }
 }
+async function getBlogsByUserId(req, res) {
+  try {
+    const userId = req.query.userId;
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+      return res.status(400).json({ message: "Invalid user ID" });
+    }
+    const dbBlogs = await Blog.find({ postedBy: userId }).exec(); // Find all blogs by user ID
+    res.status(200).json(dbBlogs); // Status code 200 for OK
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
 
-export { postBlog, getAllBlogs, getBlogById };
+export { postBlog, getAllBlogs, getBlogById, getBlogsByUserId };
