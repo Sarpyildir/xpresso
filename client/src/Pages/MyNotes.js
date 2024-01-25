@@ -3,7 +3,7 @@ import Header from "../Components/Header.js";
 import Footer from "../Components/Footer.js";
 import SearchBar from "../Components/SearchBar.js";
 import PostButton from "../Components/PostButton.js";
-import MyBlogCard from "../Components/MyBlogCard.js";
+import MyNoteCard from "../Components/MyNoteCard.js";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
@@ -123,7 +123,7 @@ const MyNotes = () => {
             <PostButton text="post" type="post" onClick={handleClickOpen} />
           </div>
           {notes.map((note, index) => (
-            <MyBlogCard
+            <MyNoteCard
               key={index}
               _id={note._id}
               title={note.title}

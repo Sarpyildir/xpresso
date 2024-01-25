@@ -2,7 +2,7 @@ import React from "react";
 import PostButton from "./PostButton.js";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-function MyBlogCard(props) {
+function MyNoteCard(props) {
   const cardStyle = {
     display: "flex",
     alignItems: "center",
@@ -53,16 +53,16 @@ function MyBlogCard(props) {
   }
 
   const handleEditClick = () => {
-    navigate(`/editblog/${props._id}`);
+    navigate(`/editnote/${props._id}`);
   };
   const handleDeleteClick = async () => {
     try {
       const response = await axios.delete(
-        `http://localhost:5000/api/blog/deleteBlog?blogId=${props._id}`
+        `http://localhost:5000/api/note/deleteNote?noteId=${props._id}`
       );
       window.location.reload();
     } catch (error) {
-      console.error("Error deleting blog:", error);
+      console.error("Error deleting note:", error);
       throw error;
     }
   };
@@ -87,4 +87,4 @@ function MyBlogCard(props) {
   );
 }
 
-export default MyBlogCard;
+export default MyNoteCard;

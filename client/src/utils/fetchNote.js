@@ -5,13 +5,13 @@ async function fetchAllBlogs() {
     "http://localhost:5000/api/blog/getAllBlogs"
   );
   return response;
-}
-async function fetchBlogById(blogId) {
+}*/
+async function fetchNoteById(noteId) {
   const response = await axios.get(
-    "http://localhost:5000/api/blog/getBlogById?blogId=" + blogId
+    "http://localhost:5000/api/note/getNoteById?noteId=" + noteId
   );
   return response;
-}*/
+}
 async function fetchMyNotes(userId) {
   const response = await axios.get(
     "http://localhost:5000/api/note/getNotesByUserId?userId=" + userId
@@ -19,4 +19,4 @@ async function fetchMyNotes(userId) {
   return response;
 }
 
-export { fetchMyNotes };
+export { fetchNoteById, fetchMyNotes };

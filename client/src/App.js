@@ -13,6 +13,7 @@ import MyBlogs from "./Pages/MyBlogs";
 import MyNotes from "./Pages/MyNotes";
 import BlogPost from "./Pages/BlogPost";
 import MyBlogPost from "./Pages/MyBlogPost";
+import MyNotePost from "./Pages/MyNotePost";
 import SearchBar from "./Components/SearchBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -32,6 +33,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:blogId" element={<BlogPost />} />
         <Route path="/editblog/:blogId" element={<MyBlogPost />} />
+        <Route path="/editnote/:noteId" element={<MyNotePost />} />
         <Route path="/myblogs" element={<MyBlogs />} />
         <Route path="/mynotes" element={<MyNotes />} />
         <Route path="/searchbar" element={<SearchBar />} />

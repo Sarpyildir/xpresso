@@ -29,18 +29,18 @@ async function getAllNotes(req, res) {
     res.status(500).json({ message: "Internal server error" });
   }
 }
-
-async function getBlogById(req, res) {
+*/
+async function getNoteById(req, res) {
   try {
-    const blogId = req.query.blogId;
-    const dbBlog = await Blog.findOne({ _id: blogId }).exec();
-    res.status(201).json(dbBlog);
+    const noteId = req.query.noteId;
+    const dbNote = await Note.findOne({ _id: noteId }).exec();
+    res.status(201).json(dbNote);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal server error" });
   }
 }
-*/
+
 async function getNotesByUserId(req, res) {
   try {
     const userId = req.query.userId;
@@ -88,4 +88,4 @@ async function deleteNote(req, res) {
   }
 }
 
-export { postNote, getNotesByUserId, updateNote, deleteNote };
+export { postNote, getNotesByUserId, getNoteById, updateNote, deleteNote };
