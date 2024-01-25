@@ -98,7 +98,7 @@ const Blog = () => {
 
   return (
     <div style={containerStyle}>
-      <Header />
+      <Header title="BLOGS" />
       <div style={contentStyle}>
         <div style={contentContainerStyle}>
           <h1 style={{ textAlign: "center", fontSize: "3rem" }}>XPRESSO</h1>

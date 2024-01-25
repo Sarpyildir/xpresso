@@ -3,7 +3,7 @@ import Header from "../Components/Header.js";
 import Footer from "../Components/Footer.js";
 import SearchBar from "../Components/SearchBar.js";
 import PostButton from "../Components/PostButton.js";
-import BlogCard from "../Components/BlogCard.js";
+import MyBlogCard from "../Components/MyBlogCard.js";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
@@ -106,7 +106,7 @@ const MyBlogs = () => {
 
   return (
     <div style={containerStyle}>
-      <Header />
+      <Header title="MY BLOGS" />
       <div style={contentStyle}>
         <div style={contentContainerStyle}>
           <h1 style={{ textAlign: "center", fontSize: "3rem" }}>XPRESSO</h1>
@@ -125,7 +125,7 @@ const MyBlogs = () => {
             <PostButton text="post" type="post" onClick={handleClickOpen} />
           </div>
           {blogs.map((blog, index) => (
-            <BlogCard
+            <MyBlogCard
               key={index}
               _id={blog._id}
               title={blog.title}
