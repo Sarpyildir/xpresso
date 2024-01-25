@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
+import { fetchUserById } from "../utils/fetchUser.js";
 import { fetchBlogById } from "../utils/fetchBlog.js";
 import { formatDate } from "../utils/formatDate.js";
 import Header from "../Components/Header.js";
@@ -56,17 +56,25 @@ const BlogPost = (props) => {
   };
   const [blogData, setBlogData] = useState(null);
   const [formattedDate, setFormattedDate] = useState(null);
+  const [user, setUser] = useState(null);
   const { blogId } = useParams();
   useEffect(() => {
     fetchBlogById(blogId)
       .then((res) => {
-        setBlogData(res.data);
-        setFormattedDate(formatDate(res.data.created_at));
+        const blog = res.data;
+        setBlogData(blog);
+        setFormattedDate(formatDate(blog.created_at));
+
+        // Fetch user data after blog data is successfully fetched and set
+        return fetchUserById(blog.postedBy);
+      })
+      .then((userData) => {
+        setUser(userData.data);
       })
       .catch((error) => {
-        console.error("Failed to fetch user:", error);
+        console.error("Failed to fetch blog or user:", error);
       });
-  }, [blogData]);
+  }, [blogId]); // Depend on blogId, not on blogData
   const navigate = useNavigate();
   const handleBackClick = () => {
     navigate("/blog");
@@ -120,7 +128,7 @@ const BlogPost = (props) => {
                   gridColumnEnd: "3",
                 }}
               >
-                Username:
+                Username: {user && user.username}
               </p>
               <p
                 style={{
@@ -130,7 +138,7 @@ const BlogPost = (props) => {
                   gridColumnEnd: "3",
                 }}
               >
-                Email:
+                Email: {user && user.email}
               </p>
             </div>
             <p

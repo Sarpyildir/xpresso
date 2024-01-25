@@ -223,6 +223,21 @@ async function getUser(req, res) {
   }
 }
 
+async function getUserById(req, res) {
+  try {
+    const userId = req.query.userId;
+    const dbUser = await User.findOne({ _id: userId }).exec();
+    if (dbUser) {
+      res.status(200).json(dbUser);
+    } else {
+      res.status(404).json({ message: "User not found" });
+    }
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
+
 export {
   changePassword,
   editProfile,
@@ -235,4 +250,5 @@ export {
   getFavoriteCoffeeByName,
   getFavoriteBeanByName,
   getUser,
+  getUserById,
 };

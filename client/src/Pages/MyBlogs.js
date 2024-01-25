@@ -10,7 +10,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import fetchUser from "../utils/fetchUser.js";
+import { fetchUser } from "../utils/fetchUser.js";
 import { fetchMyBlogs } from "../utils/fetchBlog.js";
 import axios from "axios";
 
