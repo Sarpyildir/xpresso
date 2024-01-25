@@ -70,7 +70,6 @@ const MyBlogs = () => {
     if (user) {
       fetchMyBlogs(user._id)
         .then((blogData) => {
-          console.log("Fetched Blogs:", blogData.data);
           setBlogs(blogData.data);
         })
         .catch((error) => {
@@ -89,7 +88,6 @@ const MyBlogs = () => {
     if (!blogTitle.trim() || !blogDescription.trim()) {
       alert("Please fill all the fields");
     } else {
-      console.log(blogTitle, blogDescription);
       axios
         .post("http://localhost:5000/api/blog/postBlog", {
           title: blogTitle,

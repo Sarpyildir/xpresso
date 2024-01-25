@@ -57,18 +57,14 @@ const Blog = () => {
     const userEmail = sessionUser.email;
     fetchUser(userEmail)
       .then((userData) => {
-        console.log("Fetched User:", userData.data);
         setUser(userData.data);
-        console.log("Setted User:", user);
       })
       .catch((error) => {
         console.error("Failed to fetch user:", error);
       });
     fetchAllBlogs()
       .then((blogData) => {
-        console.log("Fetched Blogs:", blogData.data);
         setBlogs(blogData.data);
-        console.log("Setted Blogs:", blogs);
       })
       .catch((error) => {
         console.error("Failed to fetch blogs:", error);
@@ -84,7 +80,6 @@ const Blog = () => {
     if (!blogTitle.trim() || !blogDescription.trim()) {
       alert("Please fill all the fields");
     } else {
-      console.log(blogTitle, blogDescription);
       axios
         .post("http://localhost:5000/api/blog/postBlog", {
           title: blogTitle,
