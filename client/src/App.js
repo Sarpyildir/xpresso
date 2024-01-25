@@ -10,6 +10,7 @@ import LearnBean from "./Pages/LearnBean";
 import Favorites from "./Pages/Favorites";
 import Blog from "./Pages/Blog";
 import MyBlogs from "./Pages/MyBlogs";
+import MyNotes from "./Pages/MyNotes";
 import BlogPost from "./Pages/BlogPost";
 import MyBlogPost from "./Pages/MyBlogPost";
 import SearchBar from "./Components/SearchBar";
@@ -32,6 +33,7 @@ function App() {
         <Route path="/blog/:blogId" element={<BlogPost />} />
         <Route path="/editblog/:blogId" element={<MyBlogPost />} />
         <Route path="/myblogs" element={<MyBlogs />} />
+        <Route path="/mynotes" element={<MyNotes />} />
         <Route path="/searchbar" element={<SearchBar />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

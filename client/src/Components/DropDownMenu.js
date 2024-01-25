@@ -23,7 +23,7 @@ export default function DropDownMenu(props) {
     <Dropdown>
       <MenuButton>{props.username}</MenuButton>
       <Menu slots={{ listbox: Listbox }}>
-        <MenuItem onClick={createHandleMenuClick("Notes")}>Notes</MenuItem>
+        <MenuItem onClick={createHandleMenuClick("MyNotes")}>Notes</MenuItem>
         <MenuItem onClick={createHandleMenuClick("Favorites")}>
           Favorites
         </MenuItem>

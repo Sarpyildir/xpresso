@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 async function postNote(req, res) {
   try {
     // Create a new blog with the request data
-    const newNote = new Blog({
+    const newNote = new Note({
       title: req.body.title,
       description: req.body.description,
       postedBy: req.body.postedBy, // Assuming you have user information available in req.user
