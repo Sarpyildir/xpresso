@@ -52,7 +52,7 @@ function MyBlogCard(props) {
   }
 
   const handleReadClick = () => {
-    navigate(`/blog/${props._id}`);
+    navigate(`/editblog/${props._id}`);
   };
   return (
     <div style={cardStyle}>

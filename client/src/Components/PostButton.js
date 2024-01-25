@@ -1,6 +1,7 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import DoneIcon from "@mui/icons-material/Done";
 
 export default function PostButton(props) {
   if (props.type.toLowerCase() === "post") {
@@ -9,6 +10,26 @@ export default function PostButton(props) {
         onClick={props.onClick}
         variant="contained"
         endIcon={<AddCircleOutlineIcon />}
+        sx={{
+          borderRadius: "5px",
+          height: "40px",
+          color: "#783F0B",
+          backgroundColor: "#27C101",
+          fontWeight: "bolder",
+          "&:hover": {
+            backgroundColor: "#27C101",
+          },
+        }}
+      >
+        {props.text}
+      </Button>
+    );
+  } else if (props.type.toLowerCase() === "save") {
+    return (
+      <Button
+        onClick={props.onClick}
+        variant="contained"
+        endIcon={<DoneIcon />}
         sx={{
           borderRadius: "5px",
           height: "40px",
