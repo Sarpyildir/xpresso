@@ -70,14 +70,13 @@ async function updateBlog(req, res) {
 }
 async function deleteBlog(req, res) {
   try {
-    const blogId = req.body.blogId;
+    const blogId = req.query.blogId;
 
-    const dbBlog = await Blog.findById(blogId);
-    if (!dbBlog) {
+    const result = await Blog.findByIdAndDelete(blogId);
+    if (!result) {
       return res.status(404).json({ message: "Blog not found" });
     }
 
-    await dbBlog.remove();
     res.status(200).json({ message: "Blog deleted successfully" });
   } catch (error) {
     console.error(error);

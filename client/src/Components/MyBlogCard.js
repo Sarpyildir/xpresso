@@ -1,6 +1,7 @@
 import React from "react";
 import PostButton from "./PostButton.js";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 function MyBlogCard(props) {
   const cardStyle = {
     display: "flex",
@@ -54,7 +55,17 @@ function MyBlogCard(props) {
   const handleReadClick = () => {
     navigate(`/editblog/${props._id}`);
   };
-  const handleDeleteClick = () => {};
+  const handleDeleteClick = async () => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:5000/api/blog/deleteBlog?blogId=${props._id}`
+      );
+      window.location.reload();
+    } catch (error) {
+      console.error("Error deleting blog:", error);
+      throw error;
+    }
+  };
   return (
     <div style={cardStyle}>
       <img
