@@ -28,12 +28,14 @@ import userRoutes from "./api/routes/userRoute.js";
 import loginRoutes from "./api/routes/loginRoute.js";
 import registerRoutes from "./api/routes/registerRoute.js";
 import blogRoutes from "./api/routes/blogRoute.js";
+import noteRoutes from "./api/routes/noteRoute.js";
 
 // Use routes
 app.use("/api/register", registerRoutes);
 app.use("/api/login", loginRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/blog", blogRoutes);
+app.use("/api/note", noteRoutes);
 
 app.get("/", (req, res) => {
   res.json("Hello World!");
