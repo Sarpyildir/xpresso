@@ -52,6 +52,7 @@ const MyBlogs = () => {
   const [blogTitle, setBlogTitle] = useState("");
   const [blogDescription, setBlogDescription] = useState("");
   useEffect(() => {
+    // Fetch the user data
     const userString = sessionStorage.getItem("user");
     const sessionUser = JSON.parse(userString);
     const userEmail = sessionUser.email;
@@ -62,16 +63,22 @@ const MyBlogs = () => {
       .catch((error) => {
         console.error("Failed to fetch user:", error);
       });
-    fetchMyBlogs()
-      .then((blogData) => {
-        console.log("Fetched Blogs:", blogData.data);
-        setBlogs(blogData.data);
-        console.log("Setted Blogs:", blogs);
-      })
-      .catch((error) => {
-        console.error("Failed to fetch blogs:", error);
-      });
   }, []);
+
+  useEffect(() => {
+    // Once the user data is set, fetch the blogs
+    if (user) {
+      fetchMyBlogs(user._id)
+        .then((blogData) => {
+          console.log("Fetched Blogs:", blogData.data);
+          setBlogs(blogData.data);
+        })
+        .catch((error) => {
+          console.error("Failed to fetch blogs:", error);
+        });
+    }
+  }, [user]); // This useEffect runs whenever the 'user' state changes
+
   const handleClickOpen = () => {
     setOpen(true);
   };

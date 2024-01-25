@@ -1,5 +1,5 @@
 import Blog from "../models/blog.js";
-
+import mongoose from "mongoose";
 async function postBlog(req, res) {
   try {
     // Create a new blog with the request data
