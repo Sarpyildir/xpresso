@@ -97,8 +97,7 @@ const MyBlogPost = (props) => {
       navigate("/myblogs");
     } catch (error) {
       if (error.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
+        // server responded with a status code that falls out of the range of 2xx
         console.error("Error data:", error.response.data);
         alert(error.response.data.message || "Error occurred");
       } else if (error.request) {
