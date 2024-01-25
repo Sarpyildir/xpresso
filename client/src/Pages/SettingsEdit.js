@@ -28,7 +28,7 @@ const SettingsEdit = (props) => {
     alignItems: "center",
     justifyContent: "center",
   };
-  const [previewFile, setPreviewFile] = useState("");
+  const [previewFile, setPreviewFile] = useState(props.userData.profilePicture);
   const [name, setName] = React.useState("");
   const [surname, setSurname] = React.useState("");
   const [username, setUsername] = React.useState("");
