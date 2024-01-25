@@ -47,8 +47,8 @@ function BlogCard(props) {
   };
   const navigate = useNavigate();
   var shortDescription = props.description;
-  if (props.description.length > 275) {
-    shortDescription = props.description.substring(0, 275) + "...";
+  if (props.description.length > 260) {
+    shortDescription = props.description.substring(0, 260) + "...";
   }
 
   const handleReadClick = () => {
