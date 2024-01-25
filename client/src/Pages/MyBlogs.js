@@ -109,7 +109,6 @@ const MyBlogs = () => {
       <Header title="MY BLOGS" />
       <div style={contentStyle}>
         <div style={contentContainerStyle}>
-          <h1 style={{ textAlign: "center", fontSize: "3rem" }}>XPRESSO</h1>
           <div
             style={{
               display: "flex",
