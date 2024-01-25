@@ -54,6 +54,7 @@ function MyBlogCard(props) {
   const handleReadClick = () => {
     navigate(`/editblog/${props._id}`);
   };
+  const handleDeleteClick = () => {};
   return (
     <div style={cardStyle}>
       <img
@@ -67,6 +68,7 @@ function MyBlogCard(props) {
           <div style={descriptionStyle}>{shortDescription}</div>
         </div>
         <PostButton text="edit" type="edit" onClick={handleReadClick} />
+        <PostButton text="delete" type="edit" onClick={handleDeleteClick} />
       </div>
     </div>
   );

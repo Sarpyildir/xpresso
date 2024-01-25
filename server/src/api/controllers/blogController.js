@@ -68,4 +68,28 @@ async function updateBlog(req, res) {
     res.status(500).json({ message: "Internal server error" });
   }
 }
-export { postBlog, getAllBlogs, getBlogById, getBlogsByUserId, updateBlog };
+async function deleteBlog(req, res) {
+  try {
+    const blogId = req.body.blogId;
+
+    const dbBlog = await Blog.findById(blogId);
+    if (!dbBlog) {
+      return res.status(404).json({ message: "Blog not found" });
+    }
+
+    await dbBlog.remove();
+    res.status(200).json({ message: "Blog deleted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
+
+export {
+  postBlog,
+  getAllBlogs,
+  getBlogById,
+  getBlogsByUserId,
+  updateBlog,
+  deleteBlog,
+};
