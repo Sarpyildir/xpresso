@@ -27,6 +27,7 @@ export default function DropDownMenu(props) {
         <MenuItem onClick={createHandleMenuClick("Favorites")}>
           Favorites
         </MenuItem>
+        <MenuItem onClick={createHandleMenuClick("MyBlog")}>My Blogs</MenuItem>
         <MenuItem onClick={createHandleMenuClick("Settings")}>
           Settings
         </MenuItem>
