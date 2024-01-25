@@ -78,8 +78,10 @@ function MyBlogCard(props) {
           <div style={titleStyle}>{props.title}</div>
           <div style={descriptionStyle}>{shortDescription}</div>
         </div>
-        <PostButton text="edit" type="edit" onClick={handleReadClick} />
-        <PostButton text="delete" type="edit" onClick={handleDeleteClick} />
+        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+          <PostButton text="edit" type="edit" onClick={handleReadClick} />
+          <PostButton text="delete" type="delete" onClick={handleDeleteClick} />
+        </div>
       </div>
     </div>
   );
