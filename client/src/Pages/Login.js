@@ -98,7 +98,12 @@ const Login = () => {
     <div style={{ height: "100%", width: "100%" }}>
       <div style={gridStyle}>
         <div style={leftGridStyle}>
-          <img src="./coffee.png" alt="Logo of website" width={"200px"} />
+          <img
+            src="./coffee.png"
+            alt="Logo of website"
+            width={"200px"}
+            style={{ marginBottom: "15px" }}
+          />
 
           <div
             style={{
@@ -109,13 +114,13 @@ const Login = () => {
           >
             <h1> WELCOME TO XPRESSO</h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-              convallis sem nec tortor ullamcorper, ut tincidunt nibh aliquet.
-              Curabitur consequat quis tellus at posuere. Sed vestibulum ornare
-              enim, id laoreet neque dapibus placerat. Sed nibh orci, vestibulum
-              at elementum eu, dictum vel sem. Proin tristique nisl ac leo
-              luctus, a lobortis mauris bibendum. Quisque vel lacus leo. Nunc
-              mauris erat, commodo eu interdum vel
+              Step into the world of XPRESSO, your go-to digital coffee hub!
+              Explore a curated selection of exquisite coffees and beans,
+              complete with detailed insights. Connect with coffee lovers in our
+              Blog section, and pen your personal notes on all things coffee.
+              Whether you're a coffee expert or just starting out, XPRESSO
+              enriches your journey with ease. Join us and be part of an
+              ever-growing coffee community!
             </p>
           </div>
         </div>
