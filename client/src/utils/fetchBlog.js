@@ -4,6 +4,7 @@ async function fetchAllBlogs() {
   const response = await axios.get(
     "http://localhost:5000/api/blog/getAllBlogs"
   );
+  console.log(response);
   return response;
 }
 async function fetchBlogById(blogId) {

@@ -127,6 +127,7 @@ const MyBlogs = () => {
             <MyBlogCard
               key={index}
               _id={blog._id}
+              img={blog.postedBy.profilePicture}
               title={blog.title}
               description={blog.description}
             />

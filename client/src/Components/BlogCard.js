@@ -56,11 +56,7 @@ function BlogCard(props) {
   };
   return (
     <div style={cardStyle}>
-      <img
-        src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y29mZmVlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
-        alt="Profile"
-        style={profilePictureStyle}
-      />
+      <img src={props.img} alt="Profile" style={profilePictureStyle} />
       <div style={contentStyle}>
         <div style={textContentStyle}>
           <div style={titleStyle}>{props.title}</div>

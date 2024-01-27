@@ -21,7 +21,9 @@ async function postBlog(req, res) {
 async function getAllBlogs(req, res) {
   try {
     // Get all blogs from the database
-    const blogs = await Blog.find({}).exec();
+    const blogs = await Blog.find({})
+      .populate("postedBy", "profilePicture")
+      .exec();
     res.status(201).json(blogs);
   } catch (error) {
     console.error(error);
@@ -44,7 +46,9 @@ async function getBlogsByUserId(req, res) {
     if (!mongoose.Types.ObjectId.isValid(userId)) {
       return res.status(400).json({ message: "Invalid user ID" });
     }
-    const dbBlogs = await Blog.find({ postedBy: userId }).exec(); // Find all blogs by user ID
+    const dbBlogs = await Blog.find({ postedBy: userId })
+      .populate("postedBy", "profilePicture")
+      .exec(); // Find all blogs by user ID
     res.status(200).json(dbBlogs); // Status code 200 for OK
   } catch (error) {
     console.error(error);
