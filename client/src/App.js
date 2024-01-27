@@ -15,6 +15,7 @@ import BlogPost from "./Pages/BlogPost";
 import MyBlogPost from "./Pages/MyBlogPost";
 import MyNotePost from "./Pages/MyNotePost";
 import SearchBar from "./Components/SearchBar";
+import "./styles/generalStyles.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
