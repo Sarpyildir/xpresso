@@ -51,6 +51,7 @@ const Blog = () => {
   const [open, setOpen] = useState(false);
   const [blogTitle, setBlogTitle] = useState("");
   const [blogDescription, setBlogDescription] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   useEffect(() => {
     const userString = sessionStorage.getItem("user");
     const sessionUser = JSON.parse(userString);
@@ -70,6 +71,25 @@ const Blog = () => {
         console.error("Failed to fetch blogs:", error);
       });
   }, []);
+  useEffect(() => {
+    if (searchQuery.trim() === "") {
+      fetchAllBlogs()
+        .then((blogData) => {
+          setBlogs(blogData.data);
+        })
+        .catch((error) => {
+          console.error("Failed to fetch blogs:", error);
+        });
+    } else {
+      const filteredBlogs = blogs.filter(
+        (blog) =>
+          blog.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          blog.description.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setBlogs(filteredBlogs);
+    }
+  }, [searchQuery]); // Dependency on searchQuery
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -112,7 +132,7 @@ const Blog = () => {
               marginBottom: "2rem",
             }}
           >
-            <SearchBar />
+            <SearchBar onSearchChange={(e) => setSearchQuery(e.target.value)} />
             <PostButton text="post" type="post" onClick={handleClickOpen} />
           </div>
           {blogs.map((blog, index) => (

@@ -33,7 +33,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchBar() {
+export default function SearchBar({ onSearchChange }) {
   return (
     <Box>
       <AppBar
@@ -50,6 +50,7 @@ export default function SearchBar() {
           <StyledInputBase
             placeholder="Search…"
             inputProps={{ "aria-label": "search" }}
+            onChange={onSearchChange} // Bind the onSearchChange function here
             sx={{ color: "#594545" }}
           />
         </Toolbar>
