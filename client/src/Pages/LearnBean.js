@@ -71,7 +71,7 @@ const LearnBean = (props) => {
             <p>{bean.description}</p>
           </div>
           <div style={imageContainerStyle}>
-            <img src="./coffeeCup.svg" alt="Bean" style={coffeeImageStyle} />
+            <img src="../coffeeCup.svg" alt="Bean" style={coffeeImageStyle} />
           </div>
         </div>
       </div>

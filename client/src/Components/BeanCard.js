@@ -123,12 +123,7 @@ function BeanCard(props) {
   };
   return (
     <div style={divStyle}>
-      <img
-        style={imageStyle}
-        src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y29mZmVlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
-        alt="bean"
-      />
-      <h1 style={{ margin: "10px 0", fontSize: "1.3rem" }}>{props.beanName}</h1>
+      <h1 style={{ margin: "0", fontSize: "1.3rem" }}>{props.beanName}</h1>
       <div
         style={{
           display: "flex",
