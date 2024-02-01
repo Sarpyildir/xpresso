@@ -51,10 +51,12 @@ const MyBlogs = () => {
   const [open, setOpen] = useState(false);
   const [blogTitle, setBlogTitle] = useState("");
   const [blogDescription, setBlogDescription] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   useEffect(() => {
     // Fetch the user data
     const userString = sessionStorage.getItem("user");
     const sessionUser = JSON.parse(userString);
+
     const userEmail = sessionUser.email;
     fetchUser(userEmail)
       .then((userData) => {
@@ -77,6 +79,24 @@ const MyBlogs = () => {
         });
     }
   }, [user]); // This useEffect runs whenever the 'user' state changes
+  useEffect(() => {
+    if (searchQuery.trim() === "" && user) {
+      fetchMyBlogs(user._id)
+        .then((blogData) => {
+          setBlogs(blogData.data);
+        })
+        .catch((error) => {
+          console.error("Failed to fetch blogs:", error);
+        });
+    } else {
+      const filteredBlogs = blogs.filter(
+        (blog) =>
+          blog.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          blog.description.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setBlogs(filteredBlogs);
+    }
+  }, [searchQuery]); // Dependency on searchQuery
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -120,7 +140,7 @@ const MyBlogs = () => {
               marginBottom: "2rem",
             }}
           >
-            <SearchBar />
+            <SearchBar onSearchChange={(e) => setSearchQuery(e.target.value)} />
             <PostButton text="post" type="post" onClick={handleClickOpen} />
           </div>
           {blogs.map((blog, index) => (
