@@ -48,6 +48,7 @@ const LearnCoffee = (props) => {
     display: "flex",
     justifyContent: "flex-end",
     alignItems: "center",
+    marginLeft: "2rem",
   };
 
   const coffeeImageStyle = {
@@ -71,11 +72,7 @@ const LearnCoffee = (props) => {
             <p>{coffee.description}</p>
           </div>
           <div style={imageContainerStyle}>
-            <img
-              src="./coffeeCup.svg"
-              alt="Coffee Cup"
-              style={coffeeImageStyle}
-            />
+            <img src={coffee.photo} alt="Coffee Cup" style={coffeeImageStyle} />
           </div>
         </div>
         <div
