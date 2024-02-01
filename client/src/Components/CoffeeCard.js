@@ -33,7 +33,7 @@ function CoffeeCard(props) {
   };
   const imageStyle = {
     width: "100%",
-    height: "auto",
+    height: "140px",
   };
   const [favoriteState, setFavoriteState] = useState(false);
   const [favoriteIcon, setFavoriteIcon] = useState(
@@ -122,11 +122,7 @@ function CoffeeCard(props) {
   };
   return (
     <div style={divStyle}>
-      <img
-        style={imageStyle}
-        src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y29mZmVlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
-        alt="coffee"
-      />
+      <img style={imageStyle} src={props.coffeePhoto} alt="coffee" />
       <h1 style={{ margin: "10px 0", fontSize: "1.3rem" }}>
         {props.coffeeName}
       </h1>

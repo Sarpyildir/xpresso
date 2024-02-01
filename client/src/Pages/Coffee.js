@@ -31,7 +31,11 @@ const Coffee = () => {
       <Header title="COFFEES" />
       <div style={contentStyle}>
         {coffees.map((coffee) => (
-          <CoffeeCard key={coffee.id} coffeeName={coffee.name} />
+          <CoffeeCard
+            key={coffee.id}
+            coffeeName={coffee.name}
+            coffeePhoto={coffee.photo}
+          />
         ))}
       </div>
       <Footer />
