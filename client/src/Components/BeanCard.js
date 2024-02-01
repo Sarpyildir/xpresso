@@ -121,8 +121,19 @@ function BeanCard(props) {
     }
     window.location.reload();
   };
+  let showPhoto = false;
+  if (props.type === "fav") {
+    showPhoto = true;
+  }
   return (
     <div style={divStyle}>
+      {showPhoto && (
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Roasted_coffee_beans.jpg/1200px-Roasted_coffee_beans.jpg"
+          alt={props.beanName}
+          style={imageStyle}
+        />
+      )}
       <h1 style={{ margin: "0", fontSize: "1.3rem" }}>{props.beanName}</h1>
       <div
         style={{

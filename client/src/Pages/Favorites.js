@@ -3,6 +3,7 @@ import Header from "../Components/Header.js";
 import Footer from "../Components/Footer.js";
 import CoffeeCard from "../Components/CoffeeCard.js";
 import BeanCard from "../Components/BeanCard.js";
+import { getCoffeeByName } from "../utils/coffeeUtils.js";
 import axios from "axios";
 const Favorites = () => {
   // Styles
@@ -59,16 +60,22 @@ const Favorites = () => {
     fetchFavoriteCoffees();
     fetchFavoriteBeans();
   }, []);
-
+  for (let i = 0; i < coffees.length; i++) {
+    coffees[i] = getCoffeeByName(coffees[i].name);
+  }
   return (
     <div style={containerStyle}>
       <Header title="FAVORITES" />
       <div style={contentStyle}>
         {coffees.map((coffee) => (
-          <CoffeeCard key={coffee.id} coffeeName={coffee.name} />
+          <CoffeeCard
+            key={coffee.id}
+            coffeeName={coffee.name}
+            coffeePhoto={coffee.photo}
+          />
         ))}
         {beans.map((bean) => (
-          <BeanCard key={bean.id} beanName={bean.name} />
+          <BeanCard key={bean.id} beanName={bean.name} type="fav" />
         ))}
       </div>
       <Footer />
