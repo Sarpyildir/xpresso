@@ -51,6 +51,7 @@ const MyNotes = () => {
   const [open, setOpen] = useState(false);
   const [noteTitle, setNoteTitle] = useState("");
   const [noteDescription, setNoteDescription] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   useEffect(() => {
     // Fetch the user data
     const userString = sessionStorage.getItem("user");
@@ -76,6 +77,24 @@ const MyNotes = () => {
         });
     }
   }, [user]); // This useEffect runs whenever the 'user' state changes
+  useEffect(() => {
+    if (searchQuery.trim() === "" && user) {
+      fetchMyNotes(user._id)
+        .then((noteData) => {
+          setNotes(noteData.data);
+        })
+        .catch((error) => {
+          console.error("Failed to fetch blogs:", error);
+        });
+    } else {
+      const filteredNotes = notes.filter(
+        (note) =>
+          note.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          note.description.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setNotes(filteredNotes);
+    }
+  }, [searchQuery]); // Dependency on searchQuery
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -119,7 +138,7 @@ const MyNotes = () => {
               marginBottom: "2rem",
             }}
           >
-            <SearchBar />
+            <SearchBar onSearchChange={(e) => setSearchQuery(e.target.value)} />
             <PostButton text="post" type="post" onClick={handleClickOpen} />
           </div>
           {notes.map((note, index) => (
