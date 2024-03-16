@@ -50,7 +50,7 @@ const coffeeData = [
       "Originating in Australia and New Zealand, it is a blend of micro-foamed milk poured over a single or double shot of espresso. Contains a strong and robust coffee flavor while maintaining a luxurious, silky mouthfeel. The ratio of coffee to milk is much higher than in a latte. It’s distinction from latte comes from its volume and velvety milk texture. ",
     ingredients: ["Coffee", "Milk"],
     photo:
-      "https://cafebarista.ca/cdn/shop/articles/comment-faire-flat-white-100918_1920x.png?v=1693057510",
+      "https://mithra.coffee/blog/wp-content/uploads/2021/03/flat-white-nasil-yapilir.jpg",
   },
   {
     id: 7,
